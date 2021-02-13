@@ -1,0 +1,17 @@
+[mid] {
+    display: flex;
+    justify-content: center;
+    background-color: #eee;
+    height: calc(100% - 90px);
+    padding: 10px;
+
+    [left] {
+        width: 270px;
+    }
+    [content]{
+        margin:0 10px;
+    }
+    [right] {
+        width: 270px;
+    }
+}
