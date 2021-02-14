@@ -13,8 +13,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './core/components/header/header.module';
 import { FooterModule } from './core/components/footer/footer.module';
 import { TagListModule } from './core/components/tag-list/tag-list.module';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { UserCardModule } from './core/components/user-card/user-card.module';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { RecommenderModule } from './core/components/recommender/recommender.module';
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+import { StarListModule } from './core/components/star-list/star-list.module';
 registerLocaleData(zh);
 
 @NgModule({
@@ -30,7 +34,12 @@ registerLocaleData(zh);
     HeaderModule,
     FooterModule,
     TagListModule,
-    UserCardModule
+    UserCardModule,
+    NzBreadCrumbModule,
+    NzButtonModule,
+    RecommenderModule,
+    NzCarouselModule,
+    StarListModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

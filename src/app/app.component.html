@@ -3,18 +3,47 @@
 </div>
 <div mid>
   <div left>
-    <div>
-      <app-user-card></app-user-card>
+    <div btn-box>
+      <button nz-button nzType="primary">发帖</button>
+      <button nz-button nzType="primary">提问</button>
     </div>
     <div style="margin-top: 10px;">
       <app-tag-list></app-tag-list>
     </div>
   </div>
   <div content>
-    <router-outlet></router-outlet>
+    <nz-breadcrumb nzSeparator=">">
+      <nz-breadcrumb-item>
+        Home
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a>Application List</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        An Application
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
   </div>
   <div right>
-    <div></div>
+    <div>
+      <app-user-card></app-user-card>
+    </div>
+    <div style="margin-top: 10px;">
+      <nz-carousel nzAutoPlay>
+        <div nz-carousel-content *ngFor="let index of array">
+          <h3>{{ index }}</h3>
+        </div>
+      </nz-carousel>
+    </div>
+    <div style="margin-top: 10px;background-color:#FFF">
+      <app-recommender></app-recommender>
+    </div>
+    <div style="margin-top: 10px;background-color:#FFF">
+      <app-star-list></app-star-list>
+    </div>
   </div>
 </div>
 <div footer>

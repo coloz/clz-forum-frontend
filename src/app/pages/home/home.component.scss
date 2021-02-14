@@ -1,5 +1,43 @@
 [topic-list-box] {
-    background: #fff;
-    width: 768px;
-    border:1px solid #eee;
+    overflow-y: scroll;
+    height: calc(100% - 50px);
+}
+
+[topic] {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 65px;
+    margin: 5px 0;
+    padding: 10px;
+    [title] {
+        font-size: 18px;
+    }
+    [info] {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+    }
+    [date] {
+        color: #999;
+    }
+    [avatar-box] {
+        position: absolute;
+        right: 70px;
+        display: flex;
+        align-items: center;
+    }
+
+    [num-box] {
+        width: 60px;
+        position: absolute;
+        right: 0;
+        color: #999;
+        font-size: 12px;
+    }
+
+    &:hover {
+        background-color: #eee;
+        cursor: pointer;
+    }
 }

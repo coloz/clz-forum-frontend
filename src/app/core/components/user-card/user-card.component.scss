@@ -1,6 +1,25 @@
 [user-card] {
 }
 
+[user-info] {
+    display: flex;
+    align-items: center;
+    [user-info-text] {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 40px;
+        margin-left: 10px;
+        [username] {
+            font-size: 18px;
+            line-height: 18px;
+        }
+        [usergrounp] {
+            font-size: 12px;
+        }
+    }
+}
+
 [user-data] {
     display: flex;
     justify-content: space-between;
@@ -11,4 +30,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+nz-divider {
+    margin: 5px 0;
+}
+
+[btn-box] {
+    position: absolute;
+    right: 0;
+    button {
+        font-size: 12px;
+        margin-right: 10px;
+    }
 }

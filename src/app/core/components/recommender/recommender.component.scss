@@ -1,0 +1,18 @@
+[recommender-box] {
+    padding: 10px;
+}
+
+[item] {
+    padding: 10px;
+    &:hover {
+        background-color: #eee;
+        cursor: pointer;
+    }
+}
+
+[num-box] {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #999;
+}

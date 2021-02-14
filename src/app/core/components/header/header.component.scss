@@ -3,6 +3,19 @@
     align-items: center;
     height: 60px;
     border-bottom: 1px solid #ccc;
+    position: relative;
+    [menu-list]{
+        display: flex;
+    }
+}
+
+[logo] {
+    position: relative;
+    height: 100%;
+    padding: 10px;
+    img {
+        height: 100%;
+    }
 }
 
 [right] {

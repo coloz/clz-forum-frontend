@@ -7,11 +7,39 @@
 
     [left] {
         width: 270px;
+        flex-grow: 0;
     }
-    [content]{
-        margin:0 10px;
+    [content] {
+        margin: 0 10px;
+        padding: 10px;
+        background: #fff;
+        width: 768px;
+        border: 1px solid #eee;
+        position: relative;
     }
     [right] {
         width: 270px;
+        flex-grow: 0;
+    }
+}
+
+[btn-box] {
+    padding: 1px;
+    display: flex;
+    justify-content: space-between;
+    button {
+        width: calc(50% - 6px);
+    }
+}
+
+nz-carousel {
+    height: 160px;
+    [nz-carousel-content] {
+        text-align: center;
+        height: 160px;
+        line-height: 160px;
+        background: #364d79;
+        color: #fff;
+        overflow: hidden;
     }
 }

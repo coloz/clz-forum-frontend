@@ -1,0 +1,16 @@
+[stars-box] {
+    padding: 10px;
+}
+[item-box] {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+[item] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 10px;
+}
