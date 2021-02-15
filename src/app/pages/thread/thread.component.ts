@@ -4,7 +4,7 @@ import { DiscuzService } from 'src/app/core/services/discuz.service';
 import Editor from '@toast-ui/editor';
 import '@toast-ui/editor/dist/i18n/zh-cn';
 import { ViewService } from 'src/app/core/services/view.service';
-
+import { IPageInfo } from 'ngx-virtual-scroller';
 
 @Component({
   selector: 'app-thread',
@@ -27,6 +27,9 @@ export class ThreadComponent implements OnInit {
 
   pageIndex = 1;
   pageSize = 10;
+  total;
+
+  loading: boolean;
 
   constructor(
     private discuzService: DiscuzService,
@@ -52,9 +55,23 @@ export class ThreadComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
         console.log(resp);
-        this.items = resp
+        this.items = resp.data;
+        this.total = resp.total;
         resolve(true)
       })
+    })
+  }
+
+  fetchMore(event: IPageInfo) {
+    // console.log(event.endIndex, this.items.length);
+    if (event.endIndex == -1 || event.endIndex !== this.items.length - 1 || this.items.length >= this.total) return;
+    this.pageIndex++;
+    this.loading = true;
+    this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
+      console.log(resp);
+      this.items = this.items.concat(resp.data);
+      this.total = resp.total;
+      this.loading = false
     })
   }
 

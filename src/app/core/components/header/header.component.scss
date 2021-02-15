@@ -4,8 +4,11 @@
     height: 60px;
     border-bottom: 1px solid #ccc;
     position: relative;
-    [menu-list]{
+    [menu-list] {
         display: flex;
+        [item] {
+            margin-right: 10px;
+        }
     }
 }
 

@@ -2,8 +2,9 @@
     <div title *ngIf="items[0]">
         {{items[0].subject}}
     </div>
-    <div post-list>
-        <div post *ngFor="let item of items">
+    <!-- <div post-list> -->
+    <virtual-scroller post-list #scroll [items]="items" (vsEnd)="fetchMore($event)" [enableUnequalChildrenSizes]="true">
+        <div post *ngFor="let item of scroll.viewPortItems">
             <div user-info>
                 <nz-avatar nzSize="large" nzIcon="user"
                     nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{item.authorid}}&size=small"></nz-avatar>
@@ -15,7 +16,10 @@
                 <div tail></div>
             </div>
         </div>
-    </div>
+        <div style="height:10px"></div>
+        <div *ngIf="loading" class="loader">Loading...</div>
+    </virtual-scroller>
+    <!-- </div> -->
 
     <div editor id="editor"></div>
 </div>

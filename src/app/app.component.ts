@@ -19,8 +19,15 @@ export class AppComponent {
   }
 
   ngOnInit() {
+
+  }
+
+  ngAfterViewInit() {
     this.viewService.userCard.subscribe(uid => {
-      this.currentUid = uid
+      setTimeout(() => {
+        this.currentUid = uid
+      });
+
     })
   }
 

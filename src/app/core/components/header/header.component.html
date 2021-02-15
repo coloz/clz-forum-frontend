@@ -1,11 +1,7 @@
 <div header-box>
     <div logo [routerLink]="[ '/' ]"><img src="assets/logo.png" alt=""></div>
     <div menu-list>
-        <div> {{'menu1'}}</div>
-        <div> {{'menu2'}}</div>
-        <div> {{'menu3'}}</div>
-        <div> {{'menu4'}}</div>
-        <div> {{'menu5'}}</div>
+        <div item  *ngFor="let item of items"> {{'menuItem'}}</div>
     </div>
     <div right2>
         <nz-input-group [nzSuffix]="suffixIconSearch">
@@ -15,5 +11,5 @@
             <i nz-icon nzType="search"></i>
         </ng-template>
     </div>
-    <div right>注册/登录</div>
+    <!-- <div right>注册/登录</div> -->
 </div>

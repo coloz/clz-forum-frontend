@@ -26,6 +26,7 @@
     "ng-zorro-antd": "^11.1.0",
     "ngx-markdown": "^11.0.1",
     "ngx-tui": "^2.0.0",
+    "ngx-virtual-scroller": "^4.0.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

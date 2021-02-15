@@ -41,5 +41,6 @@
             </div>
         </a>
     </div>
-    <nz-pagination [(nzPageIndex)]="pageIndex" (nzPageIndexChange)="pageIndexChange($event)" [nzTotal]="50" [nzSize]="'small'"></nz-pagination>
+    <nz-pagination [(nzPageIndex)]="pageIndex" (nzPageIndexChange)="pageIndexChange($event)" [nzTotal]="total"
+        [nzPageSize]="pageSize" [nzSize]="'small'"></nz-pagination>
 </div>

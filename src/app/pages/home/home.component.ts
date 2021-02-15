@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   pageIndex = 1;
   pageSize = 10;
+  total;
 
   constructor(
     private discuzService: DiscuzService,
@@ -25,8 +26,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.pageSize = Math.floor(this.threadListBox.nativeElement.clientHeight / 69);
-    this.update()
+    setTimeout(() => {
+      this.pageSize = Math.floor(this.threadListBox.nativeElement.clientHeight / 69);
+      this.update()
+    })
   }
 
   pageIndexChange(e) {
@@ -35,7 +38,8 @@ export class HomeComponent implements OnInit {
 
   update() {
     this.discuzService.getThreadAll({ pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
-      this.items = resp
+      this.items = resp.data;
+      this.total = resp.total
     })
   }
 
