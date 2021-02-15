@@ -6,6 +6,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { PipesModule } from 'src/app/core/pipes/pipes.module';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -15,6 +16,7 @@ import { PipesModule } from 'src/app/core/pipes/pipes.module';
     NzTagModule,
     NzAvatarModule,
     PipesModule,
+    NzPaginationModule,
     RouterModule.forChild([
       {
         path: '',

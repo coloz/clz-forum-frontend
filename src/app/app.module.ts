@@ -19,8 +19,6 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { RecommenderModule } from './core/components/recommender/recommender.module';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { StarListModule } from './core/components/star-list/star-list.module';
-import { FDatePipe } from './core/pipes/f-date.pipe';
-import { PipesModule } from './core/pipes/pipes.module';
 registerLocaleData(zh);
 
 @NgModule({

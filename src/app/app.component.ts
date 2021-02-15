@@ -9,5 +9,5 @@ export class AppComponent {
   title = 'forum';
 
 
-  array = [1, 2, 3, 4];
+  array = ["广告1", "广告2", "广告3", "广告4"];
 }

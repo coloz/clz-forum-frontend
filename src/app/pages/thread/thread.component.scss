@@ -1,4 +1,73 @@
-[post]{
-    margin-bottom: 3px;
+[thread-detail-page] {
+    height: 100%;
+}
+
+[post-list] {
+    padding: 10px 0;
+    height: calc(100% - 230px);
+    width: calc(100% + 10px);
+    padding-right: 10px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 100%;
+        margin-left: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #535353;
+        border-radius: 5px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #ededed;
+    }
+}
+
+[post] {
+    margin-bottom: 10px;
+}
+
+[title] {
+    font-size: 18px;
     border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+[user-info] {
+    display: flex;
+    [username] {
+        margin-left: 10px;
+    }
+    [date] {
+        margin-left: 10px;
+        color: #999;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+}
+
+[message] {
+    margin-left: 50px;
+    margin-top: -15px;
+    background-color: #eeeeee;
+    padding: 10px;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    position: relative;
+    [tail] {
+        width: 0;
+        height: 0;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #eeeeee;
+        position: absolute;
+        top: 0px;
+        left: -10px;
+    }
+}
+
+[editor] {
+    height: 300px;
+    width: calc(100% - 20px);
+    position: absolute;
+    bottom: 0;
 }

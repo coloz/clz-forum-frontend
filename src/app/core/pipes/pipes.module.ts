@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FDatePipe } from './f-date.pipe';
+import { DzCodePipe } from './dz-code.pipe';
 
 
 
 @NgModule({
-  declarations: [FDatePipe],
+  declarations: [FDatePipe, DzCodePipe],
   imports: [
     CommonModule
   ],
-  providers: [FDatePipe],
-  exports: [FDatePipe]
+  exports: [FDatePipe, DzCodePipe]
 })
 export class PipesModule { }

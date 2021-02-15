@@ -1,42 +1,45 @@
-<div thread-list-box>
-    <div thread *ngFor="let item of items">
-        <div>
-            <div title>{{item.subject}}</div>
-            <div info>
-                <div>
-                    <nz-tag [nzColor]="'#f50'">#f50</nz-tag>
-                    <nz-tag [nzColor]="'#2db7f5'">#2db7f5</nz-tag>
-                    <nz-tag [nzColor]="'#87d068'">#87d068</nz-tag>
-                    <nz-tag [nzColor]="'#108ee9'">#108ee9</nz-tag>
+<div thread-list-page>
+    <div thread-list-box #threadListBox>
+        <a thread *ngFor="let item of items" [routerLink]="[ '/t/'+item.tid ]">
+            <div>
+                <div title>{{item.subject}}</div>
+                <div info>
+                    <div>
+                        <nz-tag [nzColor]="'#f50'">#f50</nz-tag>
+                        <nz-tag [nzColor]="'#2db7f5'">#2db7f5</nz-tag>
+                        <nz-tag [nzColor]="'#87d068'">#87d068</nz-tag>
+                        <nz-tag [nzColor]="'#108ee9'">#108ee9</nz-tag>
+                    </div>
+                    <div date>
+                        {{item.dateline | fDate}}
+                    </div>
                 </div>
-                <div date>
-                    {{item.dateline | fDate}}
+            </div>
+            <div avatar-box>
+                <nz-avatar-group>
+                    <nz-avatar nzIcon="user" nzSrc="assets/avatar/avatar.jpg"></nz-avatar>
+                    <nz-avatar style="background-color: #f56a00" nzText="U"></nz-avatar>
+                    <nz-avatar style="background-color: #87d068" nz-tooltip nzTooltipTitle="NG-ZORRO User"
+                        nzIcon="user">
+                    </nz-avatar>
+                    <nz-avatar style="background-color: #1890ff" nzText="NG"></nz-avatar>
+                </nz-avatar-group>
+            </div>
+            <div num-box>
+                <div num>
+                    <i nz-icon nzType="eye" nzTheme="outline"></i>
+                    {{item.views}}
+                </div>
+                <div num>
+                    <i nz-icon nzType="message" nzTheme="outline"></i>
+                    {{item.replies}}
+                </div>
+                <div num>
+                    <i nz-icon nzType="heart" nzTheme="outline"></i>
+                    {{item.recommend_add}}
                 </div>
             </div>
-        </div>
-        <div avatar-box>
-            <nz-avatar-group>
-                <nz-avatar nzIcon="user" nzSrc="assets/avatar/avatar.jpg"></nz-avatar>
-                <nz-avatar style="background-color: #f56a00" nzText="U"></nz-avatar>
-                <nz-avatar style="background-color: #87d068" nz-tooltip nzTooltipTitle="NG-ZORRO User" nzIcon="user">
-                </nz-avatar>
-                <nz-avatar style="background-color: #1890ff" nzText="NG"></nz-avatar>
-            </nz-avatar-group>
-        </div>
-        <div num-box>
-            <div num>
-                <i nz-icon nzType="eye" nzTheme="outline"></i>
-                {{item.views}}
-            </div>
-            <div num>
-                <i nz-icon nzType="message" nzTheme="outline"></i>
-                {{item.replies}}
-            </div>
-            <div num>
-                <i nz-icon nzType="heart" nzTheme="outline"></i>
-                {{item.recommend_add}}
-            </div>
-
-        </div>
+        </a>
     </div>
+    <nz-pagination [(nzPageIndex)]="pageIndex" (nzPageIndexChange)="pageIndexChange($event)" [nzTotal]="50" [nzSize]="'small'"></nz-pagination>
 </div>

@@ -1,6 +1,9 @@
+[thread-list-page] {
+    height: 100%;
+}
+
 [thread-list-box] {
-    overflow-y: scroll;
-    height: calc(100% - 50px);
+    height: calc(100% - 25px);
 }
 
 [thread] {
@@ -12,6 +15,8 @@
     padding: 10px;
     [title] {
         font-size: 16px;
+        color: #111;
+        margin-bottom: 5px;
     }
     [info] {
         display: flex;

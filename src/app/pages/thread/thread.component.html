@@ -1,6 +1,21 @@
-<div post *ngFor="let item of items">
-    {{item.message}}
-</div>
+<div thread-detail-page>
+    <div title *ngIf="items[0]">
+        {{items[0].subject}}
+    </div>
+    <div post-list>
+        <div post *ngFor="let item of items">
+            <div user-info>
+                <nz-avatar nzSize="large" nzIcon="user"
+                    nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{item.authorid}}&size=small"></nz-avatar>
+                <div username>{{item.author}}</div>
+                <div date>{{item.dateline | fDate}}</div>
+            </div>
+            <div message>
+                <div innerHTML="{{item.message | dzCode}}"></div>
+                <div tail></div>
+            </div>
+        </div>
+    </div>
 
-<textarea class="prism-live language-markdown" rows="4" nz-input [(ngModel)]="inputValue"></textarea>
-<tui-editor [options] = "options" ></tui-editor>
+    <div editor id="editor"></div>
+</div>
