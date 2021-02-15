@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 't/:tid',
     loadChildren: () => import('./pages/thread/thread.module').then(m => m.ThreadModule)
   },
+  {
+    path: 'u/:uid',
+    loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
+  },
 ];
 
 @NgModule({

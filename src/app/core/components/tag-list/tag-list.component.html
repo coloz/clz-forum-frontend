@@ -6,33 +6,10 @@
             <div more>标签列表<i nz-icon nzType="right" nzTheme="outline"></i></div>
         </div>
         <nz-divider></nz-divider>
-        <div item>
+
+        <div item *ngFor="let item of items">
             <i nz-icon nzType="send" nzTheme="outline"></i>
-            <span>兴趣标签1</span>
-        </div>
-        <div item>
-            <i nz-icon nzType="send" nzTheme="outline"></i>
-            <span>兴趣标签1</span>
-        </div>
-        <div item>
-            <i nz-icon nzType="send" nzTheme="outline"></i>
-            <span>兴趣标签1</span>
-        </div>
-        <div item>
-            <i nz-icon nzType="send" nzTheme="outline"></i>
-            <span>兴趣标签1</span>
-        </div>
-        <div item>
-            <i nz-icon nzType="send" nzTheme="outline"></i>
-            <span>兴趣标签1</span>
-        </div>
-        <div item>
-            <i nz-icon  nzTheme="outline"></i>
-            <span>兴趣标签1</span>
-        </div>
-        <div item>
-            <i nz-icon  nzTheme="outline"></i>
-            <span>兴趣标签1</span>
+            <span>{{item.tagname}}</span>
         </div>
     </nz-card>
 </div>

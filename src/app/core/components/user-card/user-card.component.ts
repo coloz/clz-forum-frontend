@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { DiscuzService } from '../../services/discuz.service';
 
 @Component({
   selector: 'app-user-card',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() uid;
+
+  info;
+
+  constructor(
+    private discuzService: DiscuzService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (typeof changes.uid != 'undefined')
+      this.update()
+  }
+
+  update() {
+    if (typeof this.uid != 'undefined')
+      this.discuzService.getUser({ uid: this.uid }).subscribe(resp => {
+        console.log(resp);
+        this.info = resp
+      })
   }
 
 }

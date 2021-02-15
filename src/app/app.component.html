@@ -14,7 +14,9 @@
   <div content>
     <nz-breadcrumb nzSeparator=">">
       <nz-breadcrumb-item>
-        Home
+        <a [routerLink]="[ '/' ]">
+          <i nz-icon nzType="home"></i>
+        </a>
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
         <a>Application List</a>
@@ -29,7 +31,7 @@
   </div>
   <div right>
     <div>
-      <app-user-card></app-user-card>
+      <app-user-card [uid]="currentUid"></app-user-card>
     </div>
     <div style="margin-top: 10px;">
       <nz-carousel nzAutoPlay>

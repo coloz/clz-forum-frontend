@@ -16,11 +16,12 @@ export class HomeComponent implements OnInit {
   pageSize = 10;
 
   constructor(
-    private discuzService: DiscuzService
+    private discuzService: DiscuzService,
+    private viewService: ViewService
   ) { }
 
   ngOnInit(): void {
-
+    this.viewService.userCard.next(3);
   }
 
   ngAfterViewInit() {

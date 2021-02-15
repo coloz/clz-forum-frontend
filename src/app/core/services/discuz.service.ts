@@ -19,4 +19,12 @@ export class DiscuzService {
     return this.http.get(`api/thread/${tid}?pageIndex=${pageIndex}&pageSize=${pageSize}`)
   }
 
+  getUser({ uid }): any {
+    return this.http.get(`api/user/${uid}`)
+  }
+
+  getTags(): any {
+    return this.http.get(`api/tags`)
+  }
+
 }

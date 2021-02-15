@@ -11,7 +11,7 @@
                 <div date>{{item.dateline | fDate}}</div>
             </div>
             <div message>
-                <div innerHTML="{{item.message | dzCode}}"></div>
+                <div [innerHTML]="item.message | bbCode"></div>
                 <div tail></div>
             </div>
         </div>

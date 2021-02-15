@@ -1,6 +1,12 @@
 [user-card] {
 }
 
+[title] {
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #666;
+}
+
 [user-info] {
     display: flex;
     align-items: center;
@@ -12,7 +18,7 @@
         margin-left: 10px;
         [username] {
             font-size: 18px;
-            line-height: 18px;
+            line-height: 25px;
         }
         [usergrounp] {
             font-size: 12px;

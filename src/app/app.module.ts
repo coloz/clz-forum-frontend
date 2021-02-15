@@ -19,6 +19,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { RecommenderModule } from './core/components/recommender/recommender.module';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { StarListModule } from './core/components/star-list/star-list.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 registerLocaleData(zh);
 
 @NgModule({
@@ -39,7 +40,8 @@ registerLocaleData(zh);
     NzButtonModule,
     RecommenderModule,
     NzCarouselModule,
-    StarListModule
+    StarListModule,
+    NzIconModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

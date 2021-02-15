@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DiscuzService } from 'src/app/core/services/discuz.service';
 import Editor from '@toast-ui/editor';
 import '@toast-ui/editor/dist/i18n/zh-cn';
+import { ViewService } from 'src/app/core/services/view.service';
+
 
 @Component({
   selector: 'app-thread',
@@ -28,18 +30,35 @@ export class ThreadComponent implements OnInit {
 
   constructor(
     private discuzService: DiscuzService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private viewService: ViewService,
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       console.log(params);
       this.tid = params.tid
-      this.update()
+      this.update().then(() => {
+        this.viewService.userCard.next(this.items[0].authorid.toString())
+      })
     })
   }
 
   ngAfterViewInit(): void {
+    this.initEditor()
+  }
+
+  async update() {
+    return new Promise((resolve, reject) => {
+      this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
+        console.log(resp);
+        this.items = resp
+        resolve(true)
+      })
+    })
+  }
+
+  initEditor() {
     const editor = new Editor({
       el: document.querySelector('#editor'),
       previewStyle: 'tab',
@@ -47,12 +66,6 @@ export class ThreadComponent implements OnInit {
       initialValue: 'content',
       language: 'zh-CN'
     });
-  }
-
-  update() {
-    this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
-      this.items = resp
-    })
   }
 
 }

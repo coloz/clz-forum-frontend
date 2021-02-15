@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViewService {
-  itemSize = 10;
+
+  userCard = new Subject()
 
   constructor() { }
 }

@@ -1,38 +1,45 @@
 <div user-card>
     <nz-card>
-        <div user-info>
-            <nz-avatar nzSize="large" nzIcon="user" nzSrc="assets/avatar/avatar2.jpg"></nz-avatar>
-            <div user-info-text>
-                <div username>奈何col</div>
-                <div usergrounp>注册用户</div>
-            </div>
-            <div btn-box>
-                <button nz-button nzType="default" nzShape="round" nzSize="small">关注</button>
-                <button nz-button nzType="default" nzShape="round" nzSize="small">私信</button>
-            </div>
+        <div title>
+            关于作者
         </div>
-        <nz-divider></nz-divider>
-        <div user-data>
-            <div num-box>
-                主题
-                <div>1234</div>
+        <ng-container *ngIf="info">
+            <div user-info>
+                <nz-avatar nzSize="large" nzIcon="user"
+                    nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{uid}}&size=small"></nz-avatar>
+                <div user-info-text>
+                    <div username>{{info.username}}</div>
+                    <div usergrounp>注册用户</div>
+                </div>
+                <div btn-box>
+                    <button nz-button nzType="default" nzShape="round" nzSize="small">关注</button>
+                    <button nz-button nzType="default" nzShape="round" nzSize="small">私信</button>
+                </div>
             </div>
-            <div num-box>
-                回复
-                <div>54321</div>
-            </div>
-            <div num-box>
+            <nz-divider></nz-divider>
+            <div user-data>
+                <div num-box>
+                    主题
+                    <div>{{info.threads}}</div>
+                </div>
+                <div num-box>
+                    回复
+                    <div>{{info.posts}}</div>
+                </div>
+                <!-- <div num-box>
                 点赞
-                <div>123444</div>
+                <div>{{info.likes}}</div>
+            </div> -->
+                <div num-box>
+                    关注
+                    <div>{{info.following}}</div>
+                </div>
+                <div num-box>
+                    粉丝
+                    <div>{{info.follower}}</div>
+                </div>
             </div>
-            <div num-box>
-                关注
-                <div>2222</div>
-            </div>
-            <div num-box>
-                粉丝
-                <div>1123</div>
-            </div>
-        </div>
+
+        </ng-container>
     </nz-card>
 </div>
