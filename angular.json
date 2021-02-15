@@ -9,6 +9,9 @@
         "@schematics/angular:component": {
           "style": "scss",
           "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -35,9 +38,16 @@
             ],
             "styles": [
               "src/theme.less",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/prismjs/themes/prism-okaidia.css",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/marked/lib/marked.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-cpp.min.js",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -72,18 +82,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "forum:build"
+            "browserTarget": "forum-frontend:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "forum:build:production"
+              "browserTarget": "forum-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "forum:build"
+            "browserTarget": "forum-frontend:build"
           }
         },
         "test": {
@@ -120,16 +131,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "forum:serve"
+            "devServerTarget": "forum-frontend:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "forum:serve:production"
+              "devServerTarget": "forum-frontend:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "forum"
+  "defaultProject": "forum-frontend"
 }

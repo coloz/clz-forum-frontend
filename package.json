@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~11.0.6",
     "@angular/router": "~11.0.6",
     "ng-zorro-antd": "^11.1.0",
+    "ngx-markdown": "^11.0.1",
+    "ngx-tui-editor": "^0.3.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

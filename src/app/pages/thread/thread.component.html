@@ -1,0 +1,6 @@
+<div post *ngFor="let item of items">
+    {{item.message}}
+</div>
+
+<textarea class="prism-live language-markdown" rows="4" nz-input [(ngModel)]="inputValue"></textarea>
+<tui-editor [options] = "options" ></tui-editor>

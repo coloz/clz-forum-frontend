@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DiscuzService } from 'src/app/core/services/discuz.service';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  items = [, , , , , , , , , , ,]
+  items = []
 
-  constructor() { }
+  constructor(
+    private discuzService: DiscuzService
+  ) { }
 
   ngOnInit(): void {
+    this.discuzService.getThreadAll().subscribe(resp => {
+      this.items = resp
+    })
   }
 
 }

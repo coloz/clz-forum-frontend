@@ -1,7 +1,7 @@
-<div topic-list-box>
-    <div topic *ngFor="let item of items">
+<div thread-list-box>
+    <div thread *ngFor="let item of items">
         <div>
-            <div title>Topic Title</div>
+            <div title>{{item.subject}}</div>
             <div info>
                 <div>
                     <nz-tag [nzColor]="'#f50'">#f50</nz-tag>
@@ -10,7 +10,7 @@
                     <nz-tag [nzColor]="'#108ee9'">#108ee9</nz-tag>
                 </div>
                 <div date>
-                    两天前
+                    {{item.dateline | fDate}}
                 </div>
             </div>
         </div>
@@ -26,15 +26,15 @@
         <div num-box>
             <div num>
                 <i nz-icon nzType="eye" nzTheme="outline"></i>
-                65498
+                {{item.views}}
             </div>
             <div num>
                 <i nz-icon nzType="message" nzTheme="outline"></i>
-                321
+                {{item.replies}}
             </div>
             <div num>
                 <i nz-icon nzType="heart" nzTheme="outline"></i>
-                123
+                {{item.recommend_add}}
             </div>
 
         </div>
