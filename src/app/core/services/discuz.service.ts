@@ -11,8 +11,10 @@ export class DiscuzService {
   ) { }
 
 
-  getThreadAll({ pageIndex, pageSize }): any {
-    return this.http.get(`api/thread/all?pageIndex=${pageIndex}&pageSize=${pageSize}`)
+  getThreadAll(params): any {
+    return this.http.get(`api/thread/all`, {
+      params: params
+    })
   }
 
   getThread({ tid, pageIndex, pageSize }): any {
@@ -23,8 +25,13 @@ export class DiscuzService {
     return this.http.get(`api/user/${uid}`)
   }
 
-  getTags(): any {
-    return this.http.get(`api/tags`)
+  getTags(num): any {
+    return this.http.get(`api/tags?num=${num}`)
   }
+
+  getCategorys(num): any {
+    return this.http.get(`api/categorys?num=${num}`)
+  }
+
 
 }

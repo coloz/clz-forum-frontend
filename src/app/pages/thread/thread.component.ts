@@ -54,7 +54,7 @@ export class ThreadComponent implements OnInit {
   async update() {
     return new Promise((resolve, reject) => {
       this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
-        console.log(resp);
+        // console.log(resp);
         this.items = resp.data;
         this.total = resp.total;
         resolve(true)
@@ -68,7 +68,7 @@ export class ThreadComponent implements OnInit {
     this.pageIndex++;
     this.loading = true;
     this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
-      console.log(resp);
+      // console.log(resp);
       this.items = this.items.concat(resp.data);
       this.total = resp.total;
       this.loading = false

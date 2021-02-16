@@ -6,8 +6,11 @@
             <div more>标签列表<i nz-icon nzType="right" nzTheme="outline"></i></div>
         </div>
         <nz-divider></nz-divider>
-
-        <div item *ngFor="let item of items">
+        <div item *ngFor="let item of items2" (click)="goto(item)">
+            <i nz-icon nzType="send" nzTheme="outline"></i>
+            <span>{{item.name}}</span>
+        </div>
+        <div item *ngFor="let item of items" (click)="goto(item)">
             <i nz-icon nzType="send" nzTheme="outline"></i>
             <span>{{item.tagname}}</span>
         </div>
