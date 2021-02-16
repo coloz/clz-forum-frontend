@@ -4,6 +4,7 @@ import { TagListComponent } from './tag-list.component';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [TagListComponent],
@@ -11,7 +12,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     CommonModule,
     NzDividerModule,
     NzCardModule,
-    NzIconModule
+    NzIconModule,
+    RouterModule.forChild([]),
   ],
   exports: [TagListComponent]
 })

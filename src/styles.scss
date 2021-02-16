@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~codemirror/lib/codemirror.css'; // Editor's Dependency Style
-@import '~@toast-ui/editor/dist/toastui-editor.css'; // Editor's Style
+@import "~codemirror/lib/codemirror.css"; // Editor's Dependency Style
+@import "~@toast-ui/editor/dist/toastui-editor.css"; // Editor's Style
+
+body {
+    div{
+        outline: none; 
+    }
+}
 
 .ant-card-body {
     padding: 10px;
@@ -9,4 +15,11 @@
 .ant-tag {
     line-height: 16px;
     opacity: 0.8;
+}
+
+@media screen and (max-width: 500px) {
+    [mhide] {
+        visibility: hidden;
+        width: 0 !important;
+    }
 }
