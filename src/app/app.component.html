@@ -6,12 +6,12 @@
     <div notice-box>
       当前站点运行在只读模式<br>
       系统版本：0.1-alpha<br>
-      本站源码：<a href="https://github.com/coloz/clz-forum-frontend" target="_blank"></a>
+      本站源码：<a href="https://github.com/coloz/clz-forum-frontend" target="_blank">Github</a><br>
       如要参与讨论，请访问<br><a href="https://www.arduino.cn" target="_blank">Arduino中文社区原站点</a>
     </div>
     <div btn-box style="margin-top: 10px;">
-      <button nz-button nzType="primary">发帖</button>
-      <button nz-button nzType="primary">提问</button>
+      <button nz-button nzType="primary" disabled>发帖</button>
+      <button nz-button nzType="primary" disabled>提问</button>
     </div>
     <div style="margin-top: 10px;">
       <app-tag-list></app-tag-list>
@@ -24,13 +24,13 @@
           <i nz-icon nzType="home"></i>
         </a>
       </nz-breadcrumb-item>
-      <nz-breadcrumb-item>
+      <!-- <nz-breadcrumb-item>
         <a>Application List</a>
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
         An Application
-      </nz-breadcrumb-item>
-    </nz-breadcrumb>
+      </nz-breadcrumb-item>-->
+    </nz-breadcrumb> 
     <div style="height:calc(100% - 30px)">
       <router-outlet></router-outlet>
     </div>
