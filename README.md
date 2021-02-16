@@ -3,12 +3,12 @@
 
 [演示站点](https://c.arduino.cn/)  
 
-## 无缝迁移  
+**无缝迁移**  
 
 为了不影响原有网站的运行，本项目计划，且长期保持和Discuz程序的共存。  
 当前版本直接使用Discuz的数据库结构。  
 
-## 参考借鉴  
+**参考借鉴**  
 
 本项目设计过程中参考了如下项目：  
 [discuzX](https://www.discuz.net/library/library/database/x3/x3_index.htm)  
@@ -17,12 +17,6 @@ flarum
 discuzQ  
 简书  
 掘金  
-
-## 参考借鉴  
-[discuzX](https://www.discuz.net/library/library/database/x3/x3_index.htm)  
-v2ex  
-flarum  
-discuzQ  
 
 ## 项目构成
 
