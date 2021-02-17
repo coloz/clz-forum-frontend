@@ -57,6 +57,11 @@ export class ThreadComponent implements OnInit {
         // console.log(resp);
         this.items = resp.data;
         this.total = resp.total;
+        this.viewService.navList.push({
+          type: 'thread',
+          text: this.items[0].subject,
+          id: this.tid
+        })
         resolve(true)
       })
     })

@@ -20,17 +20,14 @@
   <div content>
     <nz-breadcrumb nzSeparator=">">
       <nz-breadcrumb-item>
-        <a [routerLink]="[ '/' ]">
+        <a (click)="goto()">
           <i nz-icon nzType="home"></i>
         </a>
       </nz-breadcrumb-item>
-      <!-- <nz-breadcrumb-item>
-        <a>Application List</a>
+      <nz-breadcrumb-item *ngFor="let item of navList">
+        <a (click)="goto(item)">{{item.text}}</a>
       </nz-breadcrumb-item>
-      <nz-breadcrumb-item>
-        An Application
-      </nz-breadcrumb-item>-->
-    </nz-breadcrumb> 
+    </nz-breadcrumb>
     <div style="height:calc(100% - 30px)">
       <router-outlet></router-outlet>
     </div>

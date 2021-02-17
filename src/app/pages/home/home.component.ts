@@ -56,7 +56,9 @@ export class HomeComponent implements OnInit {
     }
     this.discuzService.getThreadAll(params).subscribe(resp => {
       this.items = resp.data;
-      this.total = resp.total
+      this.total = resp.total;
+      if (resp.tags.length > 0)
+        this.viewService.navList = [resp.tags[0]]
     })
   }
 

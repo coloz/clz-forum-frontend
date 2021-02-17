@@ -6,7 +6,12 @@ import { Subject } from 'rxjs';
 })
 export class ViewService {
 
-  userCard = new Subject()
+  userCard = new Subject();
+  navList: {
+    type: string,
+    text: string,
+    id: number
+  }[] = []
 
   constructor() { }
 }
