@@ -48,7 +48,11 @@ export class ThreadComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.initEditor()
+    this.initEditor();
+  }
+
+  ngOnDestroy(): void {
+    this.viewService.navList.pop()
   }
 
   async update() {
