@@ -1,0 +1,54 @@
+<div auth-box>
+    <div nz-row>
+        <div nz-col nzSpan="12" left>
+            <img src="assets/bg.jpg" alt="">
+        </div>
+        <div nz-col nzSpan="12" right>
+            <nz-tabset [nzCentered]="true">
+                <nz-tab nzTitle="登录">
+                    <div input-box>
+                        <nz-input-group [nzPrefix]="prefixTemplateUser">
+                            <input type="text" [(ngModel)]="username" nz-input placeholder="用户名 / 邮箱" />
+                        </nz-input-group>
+                        <ng-template #prefixTemplateUser><i nz-icon nzType="user"></i></ng-template>
+                        <nz-input-group [nzPrefix]="prefixTemplatePassword">
+                            <input type="text" [(ngModel)]="password" nz-input placeholder="密码" />
+                        </nz-input-group>
+                        <ng-template #prefixTemplatePassword><i nz-icon nzType="key"></i></ng-template>
+                        <button nz-button nzType="primary" (click)="login()">登录</button>
+                        <div text>
+                            <div>社交账号登录</div>
+                            <div icon>
+                                <i nz-icon nzType="qq" nzTheme="outline"></i>
+                                <i nz-icon nzType="wechat" nzTheme="outline"></i>
+                            </div>
+                        </div>
+                    </div>
+                </nz-tab>
+                <nz-tab nzTitle="注册">
+                    <div input-box>
+                        <nz-input-group [nzPrefix]="prefixTemplateUser">
+                            <input type="text" nz-input placeholder="用户名 / 邮箱" />
+                        </nz-input-group>
+                        <ng-template #prefixTemplateUser><i nz-icon nzType="user"></i></ng-template>
+                        <nz-input-group [nzPrefix]="prefixTemplatePassword">
+                            <input type="text" nz-input placeholder="密码" />
+                        </nz-input-group>
+                        <ng-template #prefixTemplatePassword><i nz-icon nzType="key"></i></ng-template>
+                        <nz-input-group [nzPrefix]="prefixTemplatePassword">
+                            <input type="text" nz-input placeholder="再次输入密码" />
+                        </nz-input-group>
+                        <ng-template #prefixTemplatePassword><i nz-icon nzType="key"></i></ng-template>
+                        <button nz-button nzType="primary">注册</button>
+                        <div text>
+                            点击 “注册” 即表示您同意并愿意遵守<br>
+                            Arduino中文社区<a href="http://">用户协议</a> 和 <a href="http://">隐私政策</a>
+                        </div>
+                    </div>
+
+                </nz-tab>
+            </nz-tabset>
+        </div>
+    </div>
+
+</div>
