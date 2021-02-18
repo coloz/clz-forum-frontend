@@ -43,6 +43,7 @@
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
             ],
             "scripts": [
+              "node_modules/lazysizes/lazysizes.min.js",
               "node_modules/marked/lib/marked.js",
               "node_modules/prismjs/prism.js",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
