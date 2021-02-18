@@ -20,6 +20,9 @@ import { RecommenderModule } from './core/components/recommender/recommender.mod
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { StarListModule } from './core/components/star-list/star-list.module';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+
+
 registerLocaleData(zh);
 
 @NgModule({
@@ -41,7 +44,8 @@ registerLocaleData(zh);
     RecommenderModule,
     NzCarouselModule,
     StarListModule,
-    NzIconModule
+    NzIconModule,
+    NzGridModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

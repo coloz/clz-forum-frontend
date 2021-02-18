@@ -6,7 +6,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { RouterModule } from '@angular/router';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { AuthModule } from '../auth/auth.module';
-
+import { NzGridModule } from 'ng-zorro-antd/grid';
 @NgModule({
   declarations: [HeaderComponent],
   imports: [
@@ -15,7 +15,8 @@ import { AuthModule } from '../auth/auth.module';
     NzIconModule,
     RouterModule.forChild([]),
     NzModalModule,
-    AuthModule
+    AuthModule,
+    NzGridModule
   ],
   exports: [HeaderComponent]
 })

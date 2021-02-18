@@ -2,22 +2,48 @@
   <app-header></app-header>
 </div>
 <div mid>
-  <div left mhide>
-    <div notice-box>
-      当前站点运行在只读模式<br>
-      系统版本：0.1-alpha<br>
-      本站源码：<a href="https://github.com/coloz/clz-forum-frontend" target="_blank">Github</a><br>
-      如要参与讨论，请访问<br><a href="https://www.arduino.cn" target="_blank">Arduino中文社区原站点</a>
-    </div>
-    <div btn-box style="margin-top: 10px;">
-      <button nz-button nzType="primary" disabled>发帖</button>
-      <button nz-button nzType="primary" disabled>提问</button>
-    </div>
-    <div style="margin-top: 10px;">
-      <app-tag-list></app-tag-list>
+  <div viewport>
+    <div nz-row [nzGutter]="10">
+      <div nz-col nzMd="6">
+        <div notice-box>
+          当前站点运行在只读模式<br>
+          系统版本：0.1-alpha<br>
+          本站源码：<a href="https://github.com/coloz/clz-forum-frontend" target="_blank">Github</a><br>
+          如要参与讨论，请访问<br><a href="https://www.arduino.cn" target="_blank">Arduino中文社区原站点</a>
+        </div>
+        <div btn-box style="margin-top: 10px;">
+          <button nz-button nzType="primary" disabled>发帖</button>
+          <button nz-button nzType="primary" disabled>提问</button>
+        </div>
+        <div style="margin-top: 10px;">
+          <app-tag-list></app-tag-list>
+        </div>
+      </div>
+      <div nz-col nzMd="18">
+        <div style="background-color: #fff;padding: 10px;">
+          <nz-breadcrumb nzSeparator=">">
+            <nz-breadcrumb-item>
+              <a (click)="goto()">
+                <i nz-icon nzType="home"></i>
+              </a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item *ngFor="let item of navList">
+              <a (click)="goto(item)">{{item.text}}</a>
+            </nz-breadcrumb-item>
+          </nz-breadcrumb>
+          <div style="height:calc(100% - 30px)">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+      <!-- <div nz-col nzMd="6" nzLg="8" nzXl="10">
+      Col
+    </div> -->
     </div>
   </div>
-  <div content>
+
+
+  <!-- <div content>
     <nz-breadcrumb nzSeparator=">">
       <nz-breadcrumb-item>
         <a (click)="goto()">
@@ -31,7 +57,7 @@
     <div style="height:calc(100% - 30px)">
       <router-outlet></router-outlet>
     </div>
-  </div>
+  </div> -->
   <!-- <div right>
     <div>
       <app-user-card [uid]="currentUid"></app-user-card>
@@ -51,6 +77,6 @@
     </div>
   </div> -->
 </div>
-<div footer>
+<!-- <div footer>
   <app-footer></app-footer>
-</div>
+</div> -->

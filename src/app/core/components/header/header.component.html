@@ -1,15 +1,29 @@
 <div header-box>
-    <div logo [routerLink]="[ '/' ]"><img src="assets/logo.png" alt=""></div>
-    <div menu-list>
-        <!-- <div item  *ngFor="let item of items"> {{'menuItem'}}</div> -->
+    <div viewport>
+        <div nz-row [nzGutter]="10">
+            <div nz-col nzMd="3">
+                <a logo [routerLink]="[ '/' ]"><img src="assets/logo.png" alt=""></a>
+            </div>
+            <div nz-col nzMd="3">
+                <div full>
+                    <nz-input-group [nzSuffix]="suffixIconSearch">
+                        <input type="text" nz-input placeholder="搜索" />
+                    </nz-input-group>
+                    <ng-template #suffixIconSearch>
+                        <i nz-icon nzType="search"></i>
+                    </ng-template>
+                </div>
+            </div>
+            <div nz-col nzMd="15">
+                <div menu-list full>
+                    <a item *ngFor="let item of items" href="{{item.url}}"> {{item.text}}</a>
+                </div>
+            </div>
+            <div nz-col nzMd="2">
+                <div full>
+                    <div right (click)="openAuthModel()">注册/登录</div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- <div right2>
-        <nz-input-group [nzSuffix]="suffixIconSearch">
-            <input type="text" nz-input placeholder="input search text" />
-        </nz-input-group>
-        <ng-template #suffixIconSearch>
-            <i nz-icon nzType="search"></i>
-        </ng-template>
-    </div> -->
-    <div right (click)="openAuthModel()">注册/登录</div>
 </div>

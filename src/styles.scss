@@ -3,6 +3,7 @@
 @import "~@toast-ui/editor/dist/toastui-editor.css"; // Editor's Style
 
 body {
+    background-color: #eee;
     div{
         outline: none; 
     }
@@ -17,9 +18,8 @@ body {
     opacity: 0.8;
 }
 
-@media screen and (max-width: 500px) {
-    [mhide] {
-        visibility: hidden;
-        width: 0 !important;
+@media screen and (max-width: 1920px) {
+    [viewport] {
+        width: 1440px;
     }
 }

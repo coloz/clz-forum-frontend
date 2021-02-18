@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   items = []
 
   pageIndex = 1;
-  pageSize = 10;
+  pageSize = 20;
   total;
 
   category = -1;
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
       }
 
       setTimeout(() => {
-        this.pageSize = Math.floor(this.threadListBox.nativeElement.clientHeight / 69);
+        // this.pageSize = Math.floor(this.threadListBox.nativeElement.clientHeight / 69);
         this.update()
       })
     })
@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
   }
 
   pageIndexChange(e) {
+    document.body.scrollTop=document.documentElement.scrollTop=0
     this.update()
   }
 
