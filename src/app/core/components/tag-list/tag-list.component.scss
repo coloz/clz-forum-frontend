@@ -1,9 +1,13 @@
 [tag-list-box] {
-    // display: flex;
-    // flex-direction: column;
+    padding: 10px;
+    background-color: #FFF;
 }
 
-nz-divider{
+[tag-box] {
+    height: calc(100% - 45px);
+}
+
+nz-divider {
     margin: 5px 0;
 }
 
@@ -13,12 +17,15 @@ nz-divider{
     position: relative;
     display: flex;
     align-items: center;
-    i{
-        width:30px;
+
+    i {
+        width: 30px;
     }
+
     span {
         margin-left: 10px;
-        white-space:nowrap;
+        white-space: nowrap;
+
         &:hover {
             color: rgb(0, 128, 255);
             cursor: pointer;
@@ -26,15 +33,17 @@ nz-divider{
     }
 }
 
-[more]{
+[more] {
     position: absolute;
     right: 0;
     display: flex;
     align-items: center;
     font-size: 12px;
-    i{
-        width:15px;
+
+    i {
+        width: 15px;
     }
+
     &:hover {
         color: rgb(0, 128, 255);
         cursor: pointer;

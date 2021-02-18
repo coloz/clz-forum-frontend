@@ -1,11 +1,11 @@
 <div tag-list-box>
-    <nz-card>
-        <div item [routerLink]="[ '/' ]">
-            <i nz-icon nzType="home" nzTheme="outline"></i>
-            <span>所有内容</span>
-            <div more>标签列表<i nz-icon nzType="right" nzTheme="outline"></i></div>
-        </div>
-        <nz-divider></nz-divider>
+    <div item [routerLink]="[ '/' ]">
+        <i nz-icon nzType="home" nzTheme="outline"></i>
+        <span>所有内容</span>
+        <div more>标签列表<i nz-icon nzType="right" nzTheme="outline"></i></div>
+    </div>
+    <nz-divider></nz-divider>
+    <div tag-box>
         <div item *ngFor="let item of items2" (click)="goto(item)">
             <i nz-icon nzType="send" nzTheme="outline"></i>
             <span>{{item.name}}</span>
@@ -14,5 +14,5 @@
             <i nz-icon nzType="send" nzTheme="outline"></i>
             <span>{{item.tagname}}</span>
         </div>
-    </nz-card>
+    </div>
 </div>
