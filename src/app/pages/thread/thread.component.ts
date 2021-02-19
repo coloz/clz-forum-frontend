@@ -4,7 +4,7 @@ import { DiscuzService } from 'src/app/core/services/discuz.service';
 import Editor from '@toast-ui/editor';
 import '@toast-ui/editor/dist/i18n/zh-cn';
 import { ViewService } from 'src/app/core/services/view.service';
-import { IPageInfo } from 'ngx-virtual-scroller';
+// import { IPageInfo } from 'ngx-virtual-scroller';
 
 @Component({
   selector: 'app-thread',
@@ -75,18 +75,18 @@ export class ThreadComponent implements OnInit {
     })
   }
 
-  fetchMore(event: IPageInfo) {
-    // console.log(event.endIndex, this.items.length);
-    if (event.endIndex == -1 || event.endIndex !== this.items.length - 1 || this.items.length >= this.total) return;
-    this.pageIndex++;
-    this.loading = true;
-    this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
-      // console.log(resp);
-      this.items = this.items.concat(resp.data);
-      this.total = resp.total;
-      this.loading = false
-    })
-  }
+  // fetchMore(event: IPageInfo) {
+  //   // console.log(event.endIndex, this.items.length);
+  //   if (event.endIndex == -1 || event.endIndex !== this.items.length - 1 || this.items.length >= this.total) return;
+  //   this.pageIndex++;
+  //   this.loading = true;
+  //   this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
+  //     // console.log(resp);
+  //     this.items = this.items.concat(resp.data);
+  //     this.total = resp.total;
+  //     this.loading = false
+  //   })
+  // }
 
   initEditor() {
     const editor = new Editor({
