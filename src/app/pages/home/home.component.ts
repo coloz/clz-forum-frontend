@@ -19,6 +19,12 @@ export class HomeComponent implements OnInit {
 
   category = -1;
 
+  orderMode = '0';
+
+  get navList() {
+    return this.viewService.navList
+  }
+
   constructor(
     private discuzService: DiscuzService,
     private viewService: ViewService,
@@ -36,8 +42,9 @@ export class HomeComponent implements OnInit {
       } else {
         this.category = -1;
       }
-
+      this.pageIndex = 1;
       setTimeout(() => {
+        // 自适应每页显示数量
         // this.pageSize = Math.floor(this.threadListBox.nativeElement.clientHeight / 69);
         this.update()
       })
@@ -46,12 +53,12 @@ export class HomeComponent implements OnInit {
   }
 
   pageIndexChange(e) {
-    document.body.scrollTop=document.documentElement.scrollTop=0
+    document.body.scrollTop = document.documentElement.scrollTop = 0
     this.update()
   }
 
   update() {
-    let params = { pageIndex: this.pageIndex, pageSize: this.pageSize }
+    let params = { pageIndex: this.pageIndex, pageSize: this.pageSize, order: this.orderMode }
     if (this.category != -1) {
       params['category'] = this.category
     }
@@ -65,6 +72,10 @@ export class HomeComponent implements OnInit {
 
   getColor() {
     let list = ['', '', '', '', '']
+  }
+
+  orderChange(event) {
+    this.update()
   }
 
 }

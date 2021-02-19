@@ -1,51 +1,99 @@
 <div thread-list-page>
-    <div thread-list-box #threadListBox>
-        <a thread *ngFor="let item of items" [routerLink]="[ '/t/'+item.tid ]">
-            <div>
-                <div title>{{item.subject}}</div>
-                <div info>
-                    <div>
-                        <ng-container *ngFor="let tag of item.tags">
-                            <nz-tag [nzColor]="'#f50'">{{tag.text}}</nz-tag>
-                        </ng-container>
-                    </div>
-                    <div date>
-                        {{item.dateline | fDate}}
-                    </div>
+    <div nz-row [nzGutter]="10">
+        <div nz-col nzMd="5">
+
+            <div notice-box>
+                当前站点运行在只读模式<br>
+                系统版本：0.11-alpha<br>
+                本站源码：<a href="https://github.com/coloz/clz-forum-frontend" target="_blank">Github</a><br>
+                如要参与讨论，请访问<br><a href="https://www.arduino.cn" target="_blank">Arduino中文社区原站点</a>
+            </div>
+            <div btn-box style="margin-top: 10px;">
+                <div style="width: 100%;">
+                    <nz-input-group [nzSuffix]="suffixIconSearch">
+                        <input type="text" nz-input placeholder="搜索" />
+                    </nz-input-group>
+                    <ng-template #suffixIconSearch>
+                        <i nz-icon nzType="search"></i>
+                    </ng-template>
                 </div>
             </div>
-            <div avatar-box>
-                <nz-avatar-group>
-                    <ng-container *ngFor="let user of item.users.slice(0,4)">
-                        <nz-avatar nzIcon="user"
-                            nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{user.uid}}&size=small"></nz-avatar>
-                    </ng-container>
-                    <ng-container *ngIf="item.users.length==5">
-                        <nz-avatar nzIcon="user"
-                            nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{item.users[4].uid}}&size=small">
-                        </nz-avatar>
-                    </ng-container>
-                    <ng-container *ngIf="item.users.length>5">
-                        <nz-avatar style="background-color: #1890ff" nzText="+{{item.users.length - 4}}"></nz-avatar>
-                    </ng-container>
-                </nz-avatar-group>
+            <div style="margin-top: 10px;">
+                <app-tag-list></app-tag-list>
             </div>
-            <div num-box>
-                <div num>
-                    <i nz-icon nzType="eye" nzTheme="outline"></i>
-                    {{item.views}}
+
+        </div>
+
+        <div nz-col nzMd="19">
+            <div right-box>
+                <div top-box>
+                    <app-breadcrumb></app-breadcrumb>
+                    <nz-select [(ngModel)]="orderMode" (ngModelChange)="orderChange($event)">
+                        <nz-option nzValue="0" nzLabel="最近回复"></nz-option>
+                        <nz-option nzValue="1" nzLabel="最近发布"></nz-option>
+                    </nz-select>
                 </div>
-                <div num>
-                    <i nz-icon nzType="message" nzTheme="outline"></i>
-                    {{item.replies}}
+                <div thread-list-box #threadListBox>
+                    <a thread *ngFor="let item of items" [routerLink]="[ '/t/'+item.tid ]">
+                        <div>
+                            <div title>{{item.subject}}</div>
+                            <div info>
+                                <div>
+                                    <ng-container *ngIf="category==-1">
+                                        <ng-container *ngFor="let tag of item.tags">
+                                            <nz-tag [nzColor]="'rgb(0 154 199)'">{{tag.text}}</nz-tag>
+                                        </ng-container>
+                                    </ng-container>
+                                    <ng-container *ngIf="category!=-1">
+                                        <ng-container *ngFor="let tag of item.tags.slice(1,-1)">
+                                            <nz-tag [nzColor]="'rgb(0 154 199)'">{{tag.text}}</nz-tag>
+                                        </ng-container>
+                                    </ng-container>
+
+                                </div>
+                                <div date>
+                                    {{item.dateline | fDate}}
+                                </div>
+                            </div>
+                        </div>
+                        <div avatar-box>
+                            <nz-avatar-group>
+                                <ng-container *ngFor="let user of item.users.slice(0,4)">
+                                    <nz-avatar nzIcon="user"
+                                        nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{user.uid}}&size=small">
+                                    </nz-avatar>
+                                </ng-container>
+                                <ng-container *ngIf="item.users.length==5">
+                                    <nz-avatar nzIcon="user"
+                                        nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{item.users[4].uid}}&size=small">
+                                    </nz-avatar>
+                                </ng-container>
+                                <ng-container *ngIf="item.users.length>5">
+                                    <nz-avatar style="background-color: #1890ff" nzText="+{{item.users.length - 4}}">
+                                    </nz-avatar>
+                                </ng-container>
+                            </nz-avatar-group>
+                        </div>
+                        <div num-box>
+                            <div num>
+                                <i nz-icon nzType="eye" nzTheme="outline"></i>
+                                {{item.views}}
+                            </div>
+                            <div num>
+                                <i nz-icon nzType="message" nzTheme="outline"></i>
+                                {{item.replies}}
+                            </div>
+                            <div num>
+                                <i nz-icon nzType="heart" nzTheme="outline"></i>
+                                {{item.recommend_add}}
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <div num>
-                    <i nz-icon nzType="heart" nzTheme="outline"></i>
-                    {{item.recommend_add}}
-                </div>
+                <nz-pagination [(nzPageIndex)]="pageIndex" (nzPageIndexChange)="pageIndexChange($event)"
+                    [nzTotal]="total" [nzPageSize]="pageSize" [nzSize]="'small'"></nz-pagination>
             </div>
-        </a>
+        </div>
     </div>
-    <nz-pagination [(nzPageIndex)]="pageIndex" (nzPageIndexChange)="pageIndexChange($event)" [nzTotal]="total"
-        [nzPageSize]="pageSize" [nzSize]="'small'"></nz-pagination>
+
 </div>

@@ -1,9 +1,21 @@
 [thread-list-page] {
-    height: 100%;
+    position: relative;
 }
 
-[thread-list-box] {
-    // height: calc(100% - 25px);
+
+[right-box] {
+    background: #FFF;
+    padding: 10px;
+}
+
+[top-box] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    nz-select {
+        width: 100px;
+    }
 }
 
 [thread] {
@@ -13,20 +25,30 @@
     height: 65px;
     margin: 5px 0;
     padding: 10px;
+    background-color: rgba(238, 238, 238, 0);
+    transition: background-color 0.3s;
+
     [title] {
         font-size: 16px;
         color: #111;
         margin-bottom: 5px;
         // white-space: nowrap;
     }
+
     [info] {
         display: flex;
         align-items: center;
         font-size: 12px;
+
+        nz-tag {
+            font-size: 11px;
+        }
     }
+
     [date] {
         color: #999;
     }
+
     [avatar-box] {
         position: absolute;
         right: 70px;
@@ -43,7 +65,7 @@
     }
 
     &:hover {
-        background-color: #eee;
+        background-color: rgba(238, 238, 238, 1);
         cursor: pointer;
     }
 }

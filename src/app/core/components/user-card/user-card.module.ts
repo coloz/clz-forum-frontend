@@ -12,7 +12,6 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     CommonModule,
     NzAvatarModule,
     NzDividerModule,
-    NzCardModule,
     NzButtonModule
   ],
   exports: [UserCardComponent]

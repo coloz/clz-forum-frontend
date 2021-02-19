@@ -34,8 +34,11 @@ export class TagListComponent implements OnInit {
     })
   }
 
-  goto(item) {
-    this.router.navigate(['/'], { queryParams: { cat: item.fid } })
+  goto(item = { fid: null }) {
+    if (item.fid == null)
+      this.router.navigate(['/'])
+    else
+      this.router.navigate(['/'], { queryParams: { cat: item.fid } })
   }
 
 }

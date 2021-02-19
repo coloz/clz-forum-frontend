@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'u/:uid',
     loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
   },
+  {
+    path: 'p/:pid',
+    loadChildren: () => import('./pages/post/post.module').then(m => m.PostModule)
+  },
 ];
 
 @NgModule({

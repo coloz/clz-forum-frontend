@@ -21,6 +21,7 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { StarListModule } from './core/components/star-list/star-list.module';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 
 registerLocaleData(zh);
@@ -37,7 +38,6 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     HeaderModule,
     FooterModule,
-    TagListModule,
     UserCardModule,
     NzBreadCrumbModule,
     NzButtonModule,
@@ -45,7 +45,7 @@ registerLocaleData(zh);
     NzCarouselModule,
     StarListModule,
     NzIconModule,
-    NzGridModule
+    NzInputModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

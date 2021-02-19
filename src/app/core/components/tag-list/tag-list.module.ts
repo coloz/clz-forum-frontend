@@ -13,7 +13,6 @@ import { RouterModule } from '@angular/router';
     NzDividerModule,
     NzCardModule,
     NzIconModule,
-    RouterModule.forChild([]),
   ],
   exports: [TagListComponent]
 })

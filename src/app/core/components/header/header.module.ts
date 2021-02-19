@@ -7,16 +7,17 @@ import { RouterModule } from '@angular/router';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { AuthModule } from '../auth/auth.module';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 @NgModule({
   declarations: [HeaderComponent],
   imports: [
     CommonModule,
-    NzInputModule,
     NzIconModule,
     RouterModule.forChild([]),
     NzModalModule,
     AuthModule,
-    NzGridModule
+    NzGridModule,
+    NzButtonModule
   ],
   exports: [HeaderComponent]
 })

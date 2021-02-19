@@ -31,6 +31,10 @@ export class ThreadComponent implements OnInit {
 
   loading: boolean;
 
+  get navList() {
+    return this.viewService.navList
+  }
+
   constructor(
     private discuzService: DiscuzService,
     private activatedRoute: ActivatedRoute,
@@ -94,4 +98,12 @@ export class ThreadComponent implements OnInit {
     });
   }
 
+  onScroll() {
+
+  }
+
+  inputMode = false;
+  showInput() {
+    this.inputMode = true;
+  }
 }

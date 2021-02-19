@@ -1,0 +1,10 @@
+<nz-breadcrumb nzSeparator=">">
+    <nz-breadcrumb-item>
+        <a (click)="goto()">
+            <i nz-icon nzType="home"></i>
+        </a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item *ngFor="let item of navList">
+        <a (click)="goto(item)">{{item.text}}</a>
+    </nz-breadcrumb-item>
+</nz-breadcrumb>

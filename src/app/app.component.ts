@@ -37,20 +37,4 @@ export class AppComponent {
     })
   }
 
-  goto(item = { type: 'home', id: 0 }) {
-    switch (item.type) {
-      case 'home':
-        this.router.navigate(['/'])
-        break;
-      case 'category':
-        this.router.navigate(['/'], { queryParams: { cat: item.id } })
-        break;
-      case 'thread':
-        this.router.navigate(['/t', item.id])
-        break;
-      default:
-        break;
-    }
-  }
-
 }
