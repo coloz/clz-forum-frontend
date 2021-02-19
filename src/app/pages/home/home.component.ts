@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
   }
 
   pageIndexChange(e) {
-    document.body.scrollTop = document.documentElement.scrollTop = 0
+    this.viewService.scroll2Top() 
     this.update()
   }
 

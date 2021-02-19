@@ -14,4 +14,9 @@ export class ViewService {
   }[] = []
 
   constructor() { }
+
+  scroll2Top() {
+    document.body.scrollTop = document.documentElement.scrollTop = 0
+  }
+
 }

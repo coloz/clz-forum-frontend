@@ -52,7 +52,7 @@ export class ThreadComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    // this.initEditor();
+    this.viewService.scroll2Top() 
   }
 
   ngOnDestroy(): void {
