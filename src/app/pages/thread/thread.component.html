@@ -57,7 +57,7 @@
         </div>
         <div nz-col nzMd="6">
             <div right-box>
-                <app-user-card [uid]="3"></app-user-card>
+                <app-user-card *ngIf="items[0]" [uid]="items[0].authorid"></app-user-card>
             </div>
         </div>
     </div>

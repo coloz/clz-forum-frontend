@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
       nzContent: AuthComponent,
       nzFooter: null,
       nzClosable: false,
-      nzWidth: '50%'
+      nzWidth: '500px'
     })
   }
 
