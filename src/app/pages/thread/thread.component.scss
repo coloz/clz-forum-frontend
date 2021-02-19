@@ -4,12 +4,13 @@
 
 [left-box] {
     padding: 10px;
-    background: #FFF;
+    background: #fff;
+    min-height: calc(100vh - 65px);
 }
 
 [right-box] {
     padding: 10px;
-    background: #FFF;
+    background: #fff;
 }
 
 [top-box] {
@@ -27,7 +28,8 @@ nz-divider {
     margin: 5px 0;
 }
 
-virtual-scroller {}
+virtual-scroller {
+}
 
 [post-list] {
     padding: 10px;
@@ -98,8 +100,8 @@ virtual-scroller {}
 [discuss-bar] {
     position: sticky;
     bottom: 0;
-    box-shadow: 0 0 10px #CCC;
-    background: #FFF;
+    box-shadow: 0 0 10px #ccc;
+    background: #fff;
     height: 55px;
     display: flex;
     align-items: center;
@@ -122,7 +124,7 @@ virtual-scroller {}
         flex-grow: 1;
         border-radius: 20px;
         padding: 0 10px;
-        background: #EEE;
+        background: #eee;
         color: #666;
         display: flex;
         align-items: center;

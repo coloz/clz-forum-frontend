@@ -14,6 +14,7 @@ import { BreadcrumbModule } from 'src/app/core/components/breadcrumb/breadcrumb.
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { TagListModule } from 'src/app/core/components/tag-list/tag-list.module';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -31,6 +32,7 @@ import { TagListModule } from 'src/app/core/components/tag-list/tag-list.module'
     NzInputModule,
     TagListModule,
     NzInputModule,
+    NzSkeletonModule,
     RouterModule.forChild([
       {
         path: '',

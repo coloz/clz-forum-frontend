@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DiscuzService } from '../../services/discuz.service';
+import { ViewService } from '../../services/view.service';
 
 @Component({
   selector: 'app-tag-list',
@@ -13,6 +14,7 @@ export class TagListComponent implements OnInit {
   items2 = [];
   constructor(
     private discuzService: DiscuzService,
+    private viewService: ViewService,
     private router: Router
   ) { }
 
@@ -35,8 +37,10 @@ export class TagListComponent implements OnInit {
   }
 
   goto(item = { fid: null }) {
-    if (item.fid == null)
+    if (item.fid == null) {
+      this.viewService.navList = []
       this.router.navigate(['/'])
+    }
     else
       this.router.navigate(['/'], { queryParams: { cat: item.fid } })
   }

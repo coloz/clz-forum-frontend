@@ -33,61 +33,69 @@
                     </nz-select>
                 </div>
                 <div thread-list-box #threadListBox>
-                    <a thread *ngFor="let item of items" [routerLink]="[ '/t/'+item.tid ]">
-                        <div>
-                            <div title>{{item.subject}}</div>
-                            <div info>
-                                <div>
-                                    <ng-container *ngIf="category==-1">
-                                        <ng-container *ngFor="let tag of item.tags">
-                                            <nz-tag [nzColor]="'rgb(0 154 199)'">{{tag.text}}</nz-tag>
+                    <ng-container *ngIf="!isLoading">
+                        <a thread *ngFor="let item of items" [routerLink]="[ '/t/'+item.tid ]">
+                            <div>
+                                <div title>{{item.subject}}</div>
+                                <div info>
+                                    <div>
+                                        <ng-container *ngIf="category==-1">
+                                            <ng-container *ngFor="let tag of item.tags">
+                                                <nz-tag [nzColor]="'rgb(0 154 199)'">{{tag.text}}</nz-tag>
+                                            </ng-container>
                                         </ng-container>
-                                    </ng-container>
-                                    <ng-container *ngIf="category!=-1">
-                                        <ng-container *ngFor="let tag of item.tags.slice(1,-1)">
-                                            <nz-tag [nzColor]="'rgb(0 154 199)'">{{tag.text}}</nz-tag>
+                                        <ng-container *ngIf="category!=-1">
+                                            <ng-container *ngFor="let tag of item.tags.slice(1,-1)">
+                                                <nz-tag [nzColor]="'rgb(0 154 199)'">{{tag.text}}</nz-tag>
+                                            </ng-container>
                                         </ng-container>
+                                    </div>
+                                    <div date>
+                                        {{item.dateline | fDate}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div avatar-box>
+                                <nz-avatar-group>
+                                    <ng-container *ngFor="let user of item.users.slice(0,4)">
+                                        <nz-avatar nzIcon="user"
+                                            nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{user.uid}}&size=small">
+                                        </nz-avatar>
                                     </ng-container>
-
+                                    <ng-container *ngIf="item.users.length==5">
+                                        <nz-avatar nzIcon="user"
+                                            nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{item.users[4].uid}}&size=small">
+                                        </nz-avatar>
+                                    </ng-container>
+                                    <ng-container *ngIf="item.users.length>5">
+                                        <nz-avatar style="background-color: #1890ff"
+                                            nzText="+{{item.users.length - 4}}">
+                                        </nz-avatar>
+                                    </ng-container>
+                                </nz-avatar-group>
+                            </div>
+                            <div num-box>
+                                <div num>
+                                    <i nz-icon nzType="eye" nzTheme="outline"></i>
+                                    {{item.views}}
                                 </div>
-                                <div date>
-                                    {{item.dateline | fDate}}
+                                <div num>
+                                    <i nz-icon nzType="message" nzTheme="outline"></i>
+                                    {{item.replies}}
+                                </div>
+                                <div num>
+                                    <i nz-icon nzType="heart" nzTheme="outline"></i>
+                                    {{item.recommend_add}}
                                 </div>
                             </div>
-                        </div>
-                        <div avatar-box>
-                            <nz-avatar-group>
-                                <ng-container *ngFor="let user of item.users.slice(0,4)">
-                                    <nz-avatar nzIcon="user"
-                                        nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{user.uid}}&size=small">
-                                    </nz-avatar>
-                                </ng-container>
-                                <ng-container *ngIf="item.users.length==5">
-                                    <nz-avatar nzIcon="user"
-                                        nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{item.users[4].uid}}&size=small">
-                                    </nz-avatar>
-                                </ng-container>
-                                <ng-container *ngIf="item.users.length>5">
-                                    <nz-avatar style="background-color: #1890ff" nzText="+{{item.users.length - 4}}">
-                                    </nz-avatar>
-                                </ng-container>
-                            </nz-avatar-group>
-                        </div>
-                        <div num-box>
-                            <div num>
-                                <i nz-icon nzType="eye" nzTheme="outline"></i>
-                                {{item.views}}
-                            </div>
-                            <div num>
-                                <i nz-icon nzType="message" nzTheme="outline"></i>
-                                {{item.replies}}
-                            </div>
-                            <div num>
-                                <i nz-icon nzType="heart" nzTheme="outline"></i>
-                                {{item.recommend_add}}
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    </ng-container>
+                    <ng-container *ngIf="isLoading">
+                        <ng-container *ngFor="let item of items">
+                            <nz-skeleton [nzLoading]="isLoading" [nzParagraph]="{ rows: 1 }" [nzActive]="true">
+                            </nz-skeleton>
+                        </ng-container>
+                    </ng-container>
                 </div>
                 <nz-pagination [(nzPageIndex)]="pageIndex" (nzPageIndexChange)="pageIndexChange($event)"
                     [nzTotal]="total" [nzPageSize]="pageSize" [nzSize]="'small'"></nz-pagination>

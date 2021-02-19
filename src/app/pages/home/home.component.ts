@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
 
   orderMode = '0';
 
+  isLoading = true;
+
   get navList() {
     return this.viewService.navList
   }
@@ -33,6 +35,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.viewService.userCard.next(3);
+
+    for (let index = 0; index < this.pageSize; index++) {
+      this.items.push({})
+    }
   }
 
   ngAfterViewInit() {
@@ -58,6 +64,7 @@ export class HomeComponent implements OnInit {
   }
 
   update() {
+    this.isLoading = true;
     let params = { pageIndex: this.pageIndex, pageSize: this.pageSize, order: this.orderMode }
     if (this.category != -1) {
       params['category'] = this.category
@@ -65,6 +72,7 @@ export class HomeComponent implements OnInit {
     this.discuzService.getThreadAll(params).subscribe(resp => {
       this.items = resp.data;
       this.total = resp.total;
+      this.isLoading = false;
       if (resp.tags.length > 0)
         this.viewService.navList = [resp.tags[0]]
     })

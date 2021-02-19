@@ -8,7 +8,7 @@
 }
 
 [right-box] {
-    background: #FFF;
+    background: #fff;
     padding: 10px;
 }
 
@@ -71,5 +71,19 @@
     &:hover {
         background-color: rgba(238, 238, 238, 1);
         cursor: pointer;
+    }
+}
+
+nz-skeleton {
+    height: 65px;
+    margin: 5px 0;
+
+    ::ng-deep {
+        .ant-skeleton-title {
+            margin-top: 5px;
+        }
+        .ant-skeleton-paragraph{
+            margin-top: 13.5px !important;
+        }
     }
 }

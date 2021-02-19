@@ -25,10 +25,10 @@ nz-divider {
     span {
         margin-left: 10px;
         white-space: nowrap;
-
+        cursor: pointer;
+        
         &:hover {
             color: rgb(0, 128, 255);
-            cursor: pointer;
         }
     }
 }
