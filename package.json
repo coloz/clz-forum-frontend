@@ -24,6 +24,7 @@
     "@bbob/preset-html5": "^2.6.2",
     "@toast-ui/editor": "^2.5.1",
     "@types/crypto-js": "^4.0.1",
+    "animate.css": "^4.1.1",
     "crypto-js": "^4.0.0",
     "lazysizes": "^5.3.0",
     "ng-zorro-antd": "^11.1.0",

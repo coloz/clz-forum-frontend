@@ -2,6 +2,10 @@
     position: relative;
 }
 
+[thread-list-box]{
+    overflow: hidden;
+}
+
 [notice-box] {
     background-color: #fff;
     padding: 10px;

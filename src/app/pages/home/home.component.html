@@ -20,9 +20,7 @@
             <div style="margin-top: 10px;">
                 <app-tag-list></app-tag-list>
             </div>
-
         </div>
-
         <div nz-col nzMd="19">
             <div right-box>
                 <div top-box>
@@ -34,7 +32,8 @@
                 </div>
                 <div thread-list-box #threadListBox>
                     <ng-container *ngIf="!isLoading">
-                        <a thread *ngFor="let item of items" [routerLink]="[ '/t/'+item.tid ]">
+                        <a class="animate__animated animate__zoomIn" [ngStyle]="{'animation-duration': (i*0.1)+'s'}"
+                            thread *ngFor="let item of items;index as i" [routerLink]="[ '/t/'+item.tid ]">
                             <div>
                                 <div title>{{item.subject}}</div>
                                 <div info>
