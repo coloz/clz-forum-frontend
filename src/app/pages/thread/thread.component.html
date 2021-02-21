@@ -1,6 +1,6 @@
 <div thread-detail-page>
     <div nz-row [nzGutter]="10">
-        <div nz-col nzMd="18">
+        <div nz-col nzMd="18" nzSm="24">
             <div left-box>
                 <div top-box>
                     <app-breadcrumb></app-breadcrumb>
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <div nz-col nzMd="6">
+        <div nz-col nzMd="6" hide-768>
             <div right-box>
                 <app-user-card *ngIf="items[0]" [uid]="items[0].authorid"></app-user-card>
             </div>

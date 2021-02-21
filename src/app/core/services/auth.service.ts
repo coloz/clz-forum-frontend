@@ -10,10 +10,11 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  login(username, password) {
+  login(username, password, token) {
     this.http.post('api/login', {
       username: username,
-      password: MD5(password).toString()
+      password: MD5(password).toString(),
+      token: token
     }).subscribe(resp => {
       console.log(resp);
     })

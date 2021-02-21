@@ -4,8 +4,8 @@
 
 body {
     background-color: #eee;
-    div{
-        outline: none; 
+    div {
+        outline: none;
     }
 }
 
@@ -27,5 +27,11 @@ body {
 @media screen and (max-width: 1920px) {
     [viewport] {
         width: 1024px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    [hide-768] {
+        display: none;
     }
 }

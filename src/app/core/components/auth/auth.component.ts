@@ -12,6 +12,7 @@ export class AuthComponent implements OnInit {
 
   username;
   password;
+  token;
 
   constructor(
     private authService: AuthService,
@@ -23,8 +24,7 @@ export class AuthComponent implements OnInit {
 
   login() {
     console.log(this.username, this.password);
-
-    this.authService.login(this.username, this.password);
+    this.authService.login(this.username, this.password, this.token);
   }
 
   public executeImportantAction(): void {
@@ -34,7 +34,7 @@ export class AuthComponent implements OnInit {
 
   handleToken(token) {
     console.log(token);
-
+    this.token = token
   }
 
 
