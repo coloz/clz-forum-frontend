@@ -27,6 +27,7 @@
     "animate.css": "^4.1.1",
     "crypto-js": "^4.0.0",
     "lazysizes": "^5.3.0",
+    "ng-recaptcha": "^7.0.1",
     "ng-zorro-antd": "^11.1.0",
     "ngx-markdown": "^11.0.1",
     "ngx-tui": "^2.0.0",

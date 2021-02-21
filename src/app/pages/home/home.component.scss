@@ -64,9 +64,15 @@
         align-items: center;
         app-avatar {
             margin-left: -10px;
+            ::ng-deep {
+                nz-avatar {
+                    border: 1px solid #eee;
+                }
+            }
         }
-        nz-avatar{
+        nz-avatar {
             margin-left: -10px;
+            border: 1px solid #aaa;
         }
     }
 

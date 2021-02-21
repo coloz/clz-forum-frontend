@@ -28,7 +28,7 @@ nz-tabset {
         margin-bottom: 15px;
     }
 
-    button {
+    button.login {
         width: 100%;
         position: absolute;
         bottom: 70px;
@@ -53,4 +53,7 @@ nz-tabset {
             cursor: pointer;
         }
     }
+}
+.g-recaptcha{
+    position: relative !important;
 }

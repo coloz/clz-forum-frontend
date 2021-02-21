@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class AuthComponent implements OnInit {
   password;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private recaptchaV3Service: ReCaptchaV3Service
   ) { }
 
   ngOnInit(): void {
@@ -24,5 +26,16 @@ export class AuthComponent implements OnInit {
 
     this.authService.login(this.username, this.password);
   }
+
+  public executeImportantAction(): void {
+    this.recaptchaV3Service.execute('importantAction')
+      .subscribe((token) => this.handleToken(token));
+  }
+
+  handleToken(token) {
+    console.log(token);
+
+  }
+
 
 }

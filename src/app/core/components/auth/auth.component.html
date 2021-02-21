@@ -15,7 +15,14 @@
                             <input type="text" [(ngModel)]="password" nz-input placeholder="密码" />
                         </nz-input-group>
                         <ng-template #prefixTemplatePassword><i nz-icon nzType="key"></i></ng-template>
-                        <button nz-button nzType="primary" (click)="login()">登录</button>
+                        <div>
+                            <button (click)="executeImportantAction()">Important action</button>
+                            <!-- <form [formGroup]="reactiveForm">
+                                <re-captcha formControlName="recaptchaReactive"></re-captcha>
+                                <button [disabled]="reactiveForm.invalid">Submit</button>
+                            </form> -->
+                        </div>
+                        <button class="login" nz-button nzType="primary" (click)="login()">登录</button>
                         <div text>
                             <div>社交账号登录</div>
                             <div icon>

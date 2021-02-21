@@ -1,25 +1,9 @@
 <div header-box>
     <div viewport>
-        <div nz-row [nzGutter]="10">
-            <div nz-col nzMd="4">
-                <a logo [routerLink]="[ '/' ]"><img src="assets/logo.png" alt=""></a>
-            </div>
-            <!-- <div nz-col nzMd="3">
-                <nz-button-group>
-                    <button nz-button nzType="primary" disabled>发文</button>
-                    <button nz-button nzType="primary" disabled>提问</button>
-                </nz-button-group>
-            </div> -->
-            <div nz-col nzMd="17">
-                <div menu-list full>
-                    <a item *ngFor="let item of items" href="{{item.url}}" target="_blank"> {{item.text}}</a>
-                </div>
-            </div>
-            <div nz-col nzMd="3">
-                <div full>
-                    <div right (click)="openAuthModel()">登录 / 注册</div>
-                </div>
-            </div>
+        <a logo [routerLink]="[ '/' ]"><img src="assets/logo.png" alt=""></a>
+        <div menu-list>
+            <a item *ngFor="let item of items" href="{{item.url}}" target="_blank"> {{item.text}}</a>
         </div>
+        <div right (click)="openAuthModel()">登录 / 注册</div>
     </div>
 </div>

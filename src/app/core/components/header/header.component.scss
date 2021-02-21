@@ -17,7 +17,15 @@
     }
 }
 
+[viewport] {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 [logo] {
+    position: absolute;
+    left: -130px;
     img {
         height: 45px;
     }

@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.viewService.userCard.next(3);
-
+    this.viewService.navList = []
     for (let index = 0; index < this.pageSize; index++) {
       this.items.push({})
     }
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
   }
 
   pageIndexChange(e) {
-    this.viewService.scroll2Top() 
+    this.viewService.scroll2Top()
     this.update()
   }
 
