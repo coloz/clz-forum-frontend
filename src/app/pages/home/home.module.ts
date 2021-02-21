@@ -15,6 +15,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { TagListModule } from 'src/app/core/components/tag-list/tag-list.module';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+import { AvatarModule } from 'src/app/core/components/avatar/avatar.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -25,6 +26,7 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
     NzIconModule,
     NzTagModule,
     NzAvatarModule,
+    AvatarModule,
     PipesModule,
     NzPaginationModule,
     NzSelectModule,

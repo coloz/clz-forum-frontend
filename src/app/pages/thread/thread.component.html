@@ -16,10 +16,11 @@
                 (scrolled)="onScroll()"> -->
                 <div post *ngFor="let item of items">
                     <div user-info>
-                        <nz-avatar nzSize="large" nzIcon="user"
-                            nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{item.authorid}}&size=small"></nz-avatar>
-                        <div username>{{item.author}}</div>
-                        <div date>{{item.dateline | fDate}}</div>
+                        <app-avatar [uid]="item.authorid"></app-avatar>
+                        <div text-info>
+                            <div username>{{item.author}}</div>
+                            <div date>{{item.dateline | fDate}}</div>
+                        </div>
                     </div>
                     <div message>
                         <div [innerHTML]="item.message | bbCode"></div>

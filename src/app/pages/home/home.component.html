@@ -32,8 +32,9 @@
                 </div>
                 <div thread-list-box #threadListBox>
                     <ng-container *ngIf="!isLoading">
-                        <a class="animate__animated animate__zoomIn" [ngStyle]="{'animation-duration': (i*0.1)+'s'}"
+                        <a class="animate__animated animate__fadeInLeft" [ngStyle]="{'animation-duration': (i*0.1)+'s'}"
                             thread *ngFor="let item of items;index as i" [routerLink]="[ '/t/'+item.tid ]">
+
                             <div>
                                 <div title>{{item.subject}}</div>
                                 <div info>
@@ -55,23 +56,14 @@
                                 </div>
                             </div>
                             <div avatar-box>
-                                <nz-avatar-group>
-                                    <ng-container *ngFor="let user of item.users.slice(0,4)">
-                                        <nz-avatar nzIcon="user"
-                                            nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{user.uid}}&size=small">
-                                        </nz-avatar>
-                                    </ng-container>
-                                    <ng-container *ngIf="item.users.length==5">
-                                        <nz-avatar nzIcon="user"
-                                            nzSrc="http://arduino.cn/uc_server/avatar.php?uid={{item.users[4].uid}}&size=small">
-                                        </nz-avatar>
-                                    </ng-container>
-                                    <ng-container *ngIf="item.users.length>5">
-                                        <nz-avatar style="background-color: #1890ff"
-                                            nzText="+{{item.users.length - 4}}">
-                                        </nz-avatar>
-                                    </ng-container>
-                                </nz-avatar-group>
+                                <ng-container *ngFor="let user of item.users.list">
+                                    <app-avatar [uid]="user.uid"></app-avatar>
+                                </ng-container>
+                                <ng-container *ngIf="item.users.count>5">
+                                    <nz-avatar style="background-color: #1890ff"
+                                        nzText="{{'+'+(item.users.count - 4)}}">
+                                    </nz-avatar>
+                                </ng-container>
                             </div>
                             <div num-box>
                                 <div num>
@@ -91,7 +83,7 @@
                     </ng-container>
                     <ng-container *ngIf="isLoading">
                         <ng-container *ngFor="let item of items">
-                            <nz-skeleton [nzLoading]="isLoading" [nzParagraph]="{ rows: 1 }" [nzActive]="true">
+                            <nz-skeleton style="margin-left: 10px;" [nzParagraph]="{ rows: 1 }" [nzActive]="true">
                             </nz-skeleton>
                         </ng-container>
                     </ng-container>

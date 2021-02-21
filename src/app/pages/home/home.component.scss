@@ -2,7 +2,7 @@
     position: relative;
 }
 
-[thread-list-box]{
+[thread-list-box] {
     overflow: hidden;
 }
 
@@ -62,6 +62,12 @@
         right: 70px;
         display: flex;
         align-items: center;
+        app-avatar {
+            margin-left: -10px;
+        }
+        nz-avatar{
+            margin-left: -10px;
+        }
     }
 
     [num-box] {
@@ -86,7 +92,7 @@ nz-skeleton {
         .ant-skeleton-title {
             margin-top: 5px;
         }
-        .ant-skeleton-paragraph{
+        .ant-skeleton-paragraph {
             margin-top: 13.5px !important;
         }
     }

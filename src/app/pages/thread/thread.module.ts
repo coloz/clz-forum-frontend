@@ -14,6 +14,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { UserCardModule } from 'src/app/core/components/user-card/user-card.module';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { AvatarModule } from 'src/app/core/components/avatar/avatar.module';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     UserCardModule,
     NzDividerModule,
     NzButtonModule,
+    AvatarModule,
     RouterModule.forChild([
       {
         path: '',

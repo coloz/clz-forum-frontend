@@ -9,13 +9,12 @@
 当前版本直接使用Discuz的数据库结构。  
 
 **参考借鉴**  
-
 本项目设计过程中参考了如下项目：  
-[discuzX](https://www.discuz.net/library/library/database/x3/x3_index.htm)  
+[简书](https://www.jianshu.com/)  本项目大量参考了简书的设计逻辑  
+[discuzX](https://www.discuz.net/library/library/database/x3/x3_index.htm)  本项目计划前期直接使用Discuz数据库
 v2ex  
 flarum  
-discuzQ  
-简书  
+discuzQ   
 掘金  
 
 ## 项目构成

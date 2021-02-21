@@ -5,6 +5,7 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { AvatarModule } from '../avatar/avatar.module';
 
 @NgModule({
   declarations: [UserCardComponent],
@@ -12,7 +13,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     CommonModule,
     NzAvatarModule,
     NzDividerModule,
-    NzButtonModule
+    NzButtonModule,
+    AvatarModule
   ],
   exports: [UserCardComponent]
 })
