@@ -14,7 +14,8 @@
                 <!-- <div post-list> -->
                 <!-- <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
                 (scrolled)="onScroll()"> -->
-                <div post *ngFor="let item of items;index as i" class="animate__animated animate__fadeInLeft" [ngStyle]="{'animation-duration': (i*0.1)+'s'}">
+                <div post *ngFor="let item of items;index as i" class="animate__animated animate__fadeInLeft"
+                    [ngStyle]="{'animation-duration': (i*0.1)+'s'}">
                     <div user-info>
                         <app-avatar [uid]="item.authorid"></app-avatar>
                         <div text-info>
@@ -47,7 +48,7 @@
                         <i nz-icon nzType="comment" nzTheme="outline"></i>参加讨论
                     </ng-container>
                     <ng-container *ngIf="inputMode">
-                        <textarea [(ngModel)]="inputValue"></textarea>
+                        <simplemde [(ngModel)]="inputValue"></simplemde>
                     </ng-container>
                 </div>
                 <div class="animated fadeInUp faster btn-box" *ngIf="inputMode">

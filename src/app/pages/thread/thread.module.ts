@@ -15,6 +15,7 @@ import { UserCardModule } from 'src/app/core/components/user-card/user-card.modu
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { AvatarModule } from 'src/app/core/components/avatar/avatar.module';
+import { SimplemdeConfig, SimplemdeModule } from 'ngx-simplemde';
 
 
 @NgModule({
@@ -33,12 +34,14 @@ import { AvatarModule } from 'src/app/core/components/avatar/avatar.module';
     NzDividerModule,
     NzButtonModule,
     AvatarModule,
+    SimplemdeModule,
     RouterModule.forChild([
       {
         path: '',
         component: ThreadComponent
       },
     ]),
-  ]
+  ],
+  providers:[SimplemdeConfig]
 })
 export class ThreadModule { }

@@ -149,7 +149,7 @@ virtual-scroller {
 }
 
 .inpitMode {
-    height: 300px;
+    height: 400px;
     padding: 10px;
 
     [input-btn] {
@@ -158,6 +158,10 @@ virtual-scroller {
         border-radius: 10px;
         height: calc(100% - 60px);
         width: calc(100% - 20px);
+        simplemde{
+            height: 100%;
+            width: 100%;
+        }
     }
 
     // [close-btn] {
