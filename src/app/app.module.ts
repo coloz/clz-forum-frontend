@@ -22,6 +22,7 @@ import { StarListModule } from './core/components/star-list/star-list.module';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { SimplemdeModule } from 'ngx-simplemde';
 
 
 registerLocaleData(zh);
@@ -45,7 +46,13 @@ registerLocaleData(zh);
     NzCarouselModule,
     StarListModule,
     NzIconModule,
-    NzInputModule
+    NzInputModule,
+    SimplemdeModule.forRoot({
+      // Global options
+      options: {
+        autosave: { enabled: true, uniqueId: 'MyUniqueID' },
+      },
+    })
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

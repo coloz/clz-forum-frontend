@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DiscuzService } from 'src/app/core/services/discuz.service';
 import Editor from '@toast-ui/editor';
 import '@toast-ui/editor/dist/i18n/zh-cn';
 import { ViewService } from 'src/app/core/services/view.service';
+import { SimplemdeOptions } from 'ngx-simplemde/src/config';
+import { SimplemdeComponent } from 'ngx-simplemde';
 // import { IPageInfo } from 'ngx-virtual-scroller';
 
 @Component({
@@ -17,12 +19,6 @@ export class ThreadComponent implements OnInit {
   tid;
   inputValue = "";
   inputValue_render = "";
-  options = {
-    initialValue: `# Title of Project`,
-    initialEditType: 'markdown',
-    previewStyle: 'vertical',
-    height: '200px'
-  }
 
 
   pageIndex = 1;
@@ -41,6 +37,15 @@ export class ThreadComponent implements OnInit {
     private viewService: ViewService,
   ) { }
 
+
+  @ViewChild('simplemde', { static: true }) private readonly simplemde: SimplemdeComponent;
+
+  options = {
+    toolbar: ['bold', 'italic', 'heading', '|', 'quote']
+  };
+
+  demo;
+
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       console.log(params);
@@ -53,6 +58,7 @@ export class ThreadComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.viewService.scroll2Top() 
+    this.simplemde.setOptions('lineNumbers', true);
   }
 
   ngOnDestroy(): void {
