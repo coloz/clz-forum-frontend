@@ -8,6 +8,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { FormsModule } from '@angular/forms';
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module, RECAPTCHA_BASE_URL, RECAPTCHA_LANGUAGE } from "ng-recaptcha";
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [AuthComponent],
@@ -19,7 +20,8 @@ import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module, RECAPTCHA_BASE_URL, RECAPTCHA
     NzGridModule,
     NzIconModule,
     NzButtonModule,
-    RecaptchaV3Module
+    RecaptchaV3Module,
+    NzMessageModule
   ],
   providers: [
     {

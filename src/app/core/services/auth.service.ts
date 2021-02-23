@@ -11,12 +11,10 @@ export class AuthService {
   ) { }
 
   login(username, password, token) {
-    this.http.post('api/auth/login', {
+    return this.http.post('api/auth/login', {
       username: username,
       password: MD5(password).toString(),
       token: token
-    }).subscribe(resp => {
-      console.log(resp);
     })
   }
 

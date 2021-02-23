@@ -57,3 +57,12 @@ nz-tabset {
 .g-recaptcha{
     position: relative !important;
 }
+
+
+nz-tabset{
+    ::ng-deep{
+        .ant-tabs-tab{
+            margin: 0 10px !important;
+        }
+    }
+}
