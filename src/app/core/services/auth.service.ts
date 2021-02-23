@@ -11,7 +11,7 @@ export class AuthService {
   ) { }
 
   login(username, password, token) {
-    this.http.post('api/login', {
+    this.http.post('api/auth/login', {
       username: username,
       password: MD5(password).toString(),
       token: token
