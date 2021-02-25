@@ -5,7 +5,7 @@
 
 |       列表页        |        内容页         |         其他         |
 | :-----------------: | :-------------------: | :------------------: |
-| ![](.\img\list.jpg) | ![](.\img\thread.jpg) | ![](.\img\login.jpg) |
+| ![](https://github.com/coloz/clz-forum-frontend/blob/master/img/list.jpg?raw=true) | ![](https://github.com/coloz/clz-forum-frontend/blob/master/img/thread.jpg?raw=true) | ![](https://github.com/coloz/clz-forum-frontend/blob/master/img/login.jpg?raw=true) |
 
 **无缝迁移**  
 
