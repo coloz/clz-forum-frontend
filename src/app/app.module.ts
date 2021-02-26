@@ -8,11 +8,10 @@ import { zh_CN } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './core/components/header/header.module';
 import { FooterModule } from './core/components/footer/footer.module';
-import { TagListModule } from './core/components/tag-list/tag-list.module';
 import { UserCardModule } from './core/components/user-card/user-card.module';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -20,9 +19,9 @@ import { RecommenderModule } from './core/components/recommender/recommender.mod
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { StarListModule } from './core/components/star-list/star-list.module';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { SimplemdeModule } from 'ngx-simplemde';
+import { ServerInterceptor } from './core/interceptors/server.interceptor';
 
 
 registerLocaleData(zh);
@@ -54,7 +53,10 @@ registerLocaleData(zh);
       },
     })
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [
+    { provide: NZ_I18N, useValue: zh_CN },
+    { provide: HTTP_INTERCEPTORS, useClass: ServerInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
