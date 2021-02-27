@@ -12,9 +12,7 @@ export class DiscuzService {
 
 
   getThreadAll(params): any {
-    return this.http.get(`api/thread/all`, {
-      params: params
-    })
+    return this.http.post(`api/thread/all`, params)
   }
 
   getThread({ tid, pageIndex, pageSize }): any {

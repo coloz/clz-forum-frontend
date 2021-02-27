@@ -17,6 +17,12 @@ export class ThreadComponent implements OnInit {
 
   items = [];
   tid;
+
+  subject;
+  like;
+  favtimes;
+  views;
+
   inputValue = "";
   inputValue_render = "";
 
@@ -57,7 +63,7 @@ export class ThreadComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.viewService.scroll2Top() 
+    this.viewService.scroll2Top()
     this.simplemde.setOptions('lineNumbers', true);
   }
 
@@ -69,8 +75,12 @@ export class ThreadComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
         // console.log(resp);
-        this.items = resp.data;
-        this.total = resp.total;
+        this.items = resp.data.list;
+        this.total = resp.data.total;
+        this.subject = resp.data.subject;
+        this.like = resp.data.like;
+        this.favtimes = resp.data.favtimes;
+        this.views = resp.data.views;
         this.viewService.navList.push({
           type: 'thread',
           text: this.items[0].subject,

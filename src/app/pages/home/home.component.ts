@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   ngAfterViewInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       if (typeof params.cat != 'undefined') {
-        this.category = params.cat
+        this.category = Number(params.cat)
       } else {
         this.category = -1;
       }
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
 
   update() {
     this.isLoading = true;
-    let params = { pageIndex: this.pageIndex, pageSize: this.pageSize, order: this.orderMode }
+    let params = { pageIndex: this.pageIndex, pageSize: this.pageSize, order: Number(this.orderMode) }
     if (this.category != -1) {
       params['category'] = this.category
     }

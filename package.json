@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~11.0.6",
     "@angular/platform-browser-dynamic": "~11.0.6",
     "@angular/router": "~11.0.6",
+    "@auth0/angular-jwt": "^5.0.2",
     "@bbob/core": "^2.6.2",
     "@bbob/html": "^2.6.2",
     "@bbob/preset-html5": "^2.6.2",

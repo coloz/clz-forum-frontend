@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfigLoaderService } from './core/services/config-loader.service';
 import { ViewService } from './core/services/view.service';
 
 @Component({
@@ -19,13 +20,15 @@ export class AppComponent {
 
   constructor(
     private viewService: ViewService,
-    private router: Router
+    private configLoader: ConfigLoaderService
   ) {
 
   }
 
   ngOnInit() {
-
+    this.configLoader.load('app').then((config) => {
+      this.loadSiteConfig(config)
+    })
   }
 
   ngAfterViewInit() {
@@ -35,6 +38,15 @@ export class AppComponent {
       });
 
     })
+  }
+
+  loadSiteConfig(config) {
+    document.title = config.brand_text
+    let link: any = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = config.favicon;
+    document.getElementsByTagName('head')[0].appendChild(link);
   }
 
 }

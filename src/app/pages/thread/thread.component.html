@@ -3,10 +3,12 @@
         <div nz-col nzMd="18" nzSm="24">
             <div left-box>
                 <div top-box>
-                    <app-breadcrumb></app-breadcrumb>
-                </div>
-                <div title *ngIf="items[0]">
-                    {{items[0].subject}}
+                    <div nav-box>
+                        <app-breadcrumb></app-breadcrumb>
+                    </div>
+                    <div title *ngIf="items[0]">
+                        {{subject}}
+                    </div>
                 </div>
                 <nz-divider></nz-divider>
                 <!-- <virtual-scroller #scroll [items]="items" (vsEnd)="fetchMore($event)" [enableUnequalChildrenSizes]="true"
@@ -36,11 +38,11 @@
                 <div btn-box *ngIf="!inputMode">
                     <div btn>
                         <i nz-icon nzType="like" nzTheme="outline"></i>
-                        {{16}}
+                        {{like}}
                     </div>
                     <div btn>
                         <i nz-icon nzType="star" nzTheme="outline"></i>
-                        {{31}}
+                        {{favtimes}}
                     </div>
                 </div>
                 <div input-btn (click)="showInput()">

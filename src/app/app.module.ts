@@ -22,6 +22,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { SimplemdeModule } from 'ngx-simplemde';
 import { ServerInterceptor } from './core/interceptors/server.interceptor';
+import { JwtModule } from '@auth0/angular-jwt';
+import { ConfigLoaderService } from './core/services/config-loader.service';
 
 
 registerLocaleData(zh);
@@ -46,8 +48,16 @@ registerLocaleData(zh);
     StarListModule,
     NzIconModule,
     NzInputModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem("access_token");
+        },
+        allowedDomains: ["example.com"],
+        disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
     SimplemdeModule.forRoot({
-      // Global options
       options: {
         autosave: { enabled: true, uniqueId: 'MyUniqueID' },
       },
@@ -56,6 +66,7 @@ registerLocaleData(zh);
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },
     { provide: HTTP_INTERCEPTORS, useClass: ServerInterceptor, multi: true },
+    ConfigLoaderService
   ],
   bootstrap: [AppComponent]
 })
