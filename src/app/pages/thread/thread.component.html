@@ -11,28 +11,24 @@
                     </div>
                 </div>
                 <nz-divider></nz-divider>
-                <!-- <virtual-scroller #scroll [items]="items" (vsEnd)="fetchMore($event)" [enableUnequalChildrenSizes]="true"
-                [parentScroll]="scroll.window"> -->
-                <!-- <div post-list> -->
-                <!-- <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
-                (scrolled)="onScroll()"> -->
-                <div post *ngFor="let item of items;index as i" class="animate__animated animate__fadeInLeft"
-                    [ngStyle]="{'animation-duration': (i*0.1)+'s'}">
-                    <div user-info>
-                        <app-avatar [uid]="item.authorid"></app-avatar>
-                        <div text-info>
-                            <div username>{{item.author}}</div>
-                            <div date>{{item.dateline | fDate}}</div>
+                <virtual-scroller #scroll [items]="items" (vsEnd)="fetchMore($event)"
+                    [enableUnequalChildrenSizes]="true" [parentScroll]="scroll.window">
+                    <div post *ngFor="let item of scroll.viewPortItems;index as i" class="animate__animated animate__fadeInLeft"
+                        [ngStyle]="{'animation-duration': (i*0.1)+'s'}">
+                        <div user-info>
+                            <app-avatar [uid]="item.authorid"></app-avatar>
+                            <div text-info>
+                                <div username>{{item.author}}</div>
+                                <div date>{{item.dateline | fDate}}</div>
+                            </div>
+                        </div>
+                        <div message>
+                            <div [innerHTML]="item.message | bbCode"></div>
+                            <div tail></div>
                         </div>
                     </div>
-                    <div message>
-                        <div [innerHTML]="item.message | bbCode"></div>
-                        <div tail></div>
-                    </div>
-                </div>
-                <!-- </div> -->
-                <!-- </div> -->
-                <!-- </virtual-scroller> -->
+
+                </virtual-scroller>
             </div>
             <div discuss-bar [ngClass]="{'inpitMode': inputMode}">
                 <div btn-box *ngIf="!inputMode">

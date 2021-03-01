@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { AuthService } from '../../services/auth.service';
 
 
@@ -19,16 +20,19 @@ export class AuthComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private recaptchaV3Service: ReCaptchaV3Service,
-    private message: NzMessageService
+    private message: NzMessageService,
+    private modal: NzModalService
   ) { }
 
   ngOnInit(): void {
   }
 
   login() {
-    console.log(this.username, this.password);
     this.authService.login(this.username, this.password, this.token).subscribe(resp => {
-      this.message.success(JSON.stringify(resp))
+      console.log('resp', resp);
+      this.modal.closeAll()
+      // const ref: NzModalRef = this.modal.info();
+      // ref.close();
     })
   }
 

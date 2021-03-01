@@ -53,8 +53,9 @@ registerLocaleData(zh);
         tokenGetter: () => {
           return localStorage.getItem("access_token");
         },
-        allowedDomains: ["example.com"],
-        disallowedRoutes: ["http://example.com/examplebadroute/"],
+        allowedDomains: ["localhost.4200", "www.arduino.cn", "arduino.cn"],
+        // disallowedRoutes: [""],
+        // skipWhenExpired: true,
       },
     }),
     SimplemdeModule.forRoot({
