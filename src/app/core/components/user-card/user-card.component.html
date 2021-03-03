@@ -3,7 +3,7 @@
         关于作者
     </div>
     <ng-container *ngIf="info">
-        <div user-info>
+        <div user-info [routerLink]="[ '/u/'+uid ]">
             <app-avatar [uid]="uid"></app-avatar>
             <div user-info-text>
                 <div username>{{info.username}}</div>

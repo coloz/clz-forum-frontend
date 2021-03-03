@@ -6,6 +6,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { AvatarModule } from '../avatar/avatar.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [UserCardComponent],
@@ -14,7 +15,8 @@ import { AvatarModule } from '../avatar/avatar.module';
     NzAvatarModule,
     NzDividerModule,
     NzButtonModule,
-    AvatarModule
+    AvatarModule,
+    RouterModule
   ],
   exports: [UserCardComponent]
 })

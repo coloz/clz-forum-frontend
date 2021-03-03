@@ -8,8 +8,6 @@ import { PipesModule } from 'src/app/core/pipes/pipes.module';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FormsModule } from '@angular/forms';
 import { BreadcrumbModule } from 'src/app/core/components/breadcrumb/breadcrumb.module';
-// import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { UserCardModule } from 'src/app/core/components/user-card/user-card.module';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -27,7 +25,6 @@ import { SimplemdeConfig, SimplemdeModule } from 'ngx-simplemde';
     NzInputModule,
     NzAvatarModule,
     PipesModule,
-    VirtualScrollerModule,
     BreadcrumbModule,
     NzGridModule,
     UserCardModule,

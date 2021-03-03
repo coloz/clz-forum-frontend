@@ -27,7 +27,7 @@ export class UserCardComponent implements OnInit {
   update() {
     if (typeof this.uid != 'undefined')
       this.discuzService.getUser({ uid: this.uid }).subscribe(resp => {
-        console.log(resp);
+        // console.log(resp);
           this.info = resp
       })
   }

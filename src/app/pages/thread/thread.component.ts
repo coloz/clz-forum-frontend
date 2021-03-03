@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DiscuzService } from 'src/app/core/services/discuz.service';
 import Editor from '@toast-ui/editor';
 import '@toast-ui/editor/dist/i18n/zh-cn';
 import { ViewService } from 'src/app/core/services/view.service';
 import { SimplemdeComponent } from 'ngx-simplemde';
-import { IPageInfo } from 'ngx-virtual-scroller';
+
 
 @Component({
   selector: 'app-thread',
@@ -42,8 +42,9 @@ export class ThreadComponent implements OnInit {
     private viewService: ViewService,
   ) { }
 
-
   @ViewChild('simplemde', { static: true }) private readonly simplemde: SimplemdeComponent;
+
+  @ViewChildren('post') postElementList: QueryList<ElementRef>;
 
   options = {
     toolbar: ['bold', 'italic', 'heading', '|', 'quote']
@@ -63,6 +64,7 @@ export class ThreadComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.viewService.scroll2Top()
+    
     // this.simplemde.setOptions('lineNumbers', true);
   }
 
@@ -90,18 +92,33 @@ export class ThreadComponent implements OnInit {
     })
   }
 
-  fetchMore(event: IPageInfo) {
-    // console.log(event.endIndex, this.items.length);
-    if (event.endIndex == -1 || event.endIndex !== this.items.length - 1 || this.items.length >= this.total) return;
-    this.pageIndex++;
-    this.loading = true;
-    this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
-      // console.log(resp);
-      this.items = this.items.concat(resp.data);
-      this.total = resp.total;
-      this.loading = false
-    })
-  }
+
+  // totalHeight = 0;
+  // fetchMore(event: IPageInfo) {
+  //   console.log(event.endIndex, this.items.length);
+  //   if (event.endIndex == -1 || event.endIndex !== this.items.length - 1 || this.items.length >= this.total) return;
+  //   this.pageIndex++;
+  //   this.loading = true;
+  //   this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
+  //     // console.log(resp);
+  //     this.items = this.items.concat(resp.data.list);
+  //     this.total = resp.data.total;
+  //     this.loading = false
+  //   })
+  // }
+
+  // 重新计算高度
+  // getTotalHeight() {
+  //   setInterval(() => {
+  //     let totalHeight_temp = 0;
+  //     this.postElementList.forEach(ele => {
+  //       totalHeight_temp += ele.nativeElement.clientHeight
+  //     })
+  //     this.totalHeight = totalHeight_temp
+  //     // console.log(this.totalHeight);
+  //   }, 2000)
+
+  // }
 
   initEditor() {
     const editor = new Editor({

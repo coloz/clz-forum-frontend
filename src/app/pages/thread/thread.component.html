@@ -11,10 +11,9 @@
                     </div>
                 </div>
                 <nz-divider></nz-divider>
-                <virtual-scroller #scroll [items]="items" (vsEnd)="fetchMore($event)"
-                    [enableUnequalChildrenSizes]="true" [parentScroll]="scroll.window">
-                    <div post *ngFor="let item of scroll.viewPortItems;index as i" class="animate__animated animate__fadeInLeft"
-                        [ngStyle]="{'animation-duration': (i*0.1)+'s'}">
+               
+                    <div post #post *ngFor="let item of items;index as i"
+                        class="animate__animated animate__fadeInLeft" [ngStyle]="{'animation-duration': (i*0.1)+'s'}">
                         <div user-info>
                             <app-avatar [uid]="item.authorid"></app-avatar>
                             <div text-info>
@@ -28,7 +27,6 @@
                         </div>
                     </div>
 
-                </virtual-scroller>
             </div>
             <div discuss-bar [ngClass]="{'inpitMode': inputMode}">
                 <div btn-box *ngIf="!inputMode">

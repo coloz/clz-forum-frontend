@@ -18,8 +18,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      console.log(params);
-      this.uid = params.tid
+      this.uid = params.uid
       this.update()
     })
   }

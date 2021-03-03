@@ -16,12 +16,14 @@
 
 [top-box] {
     height: 72px;
+
     [nav-box] {
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 32px;
     }
+
     [title] {
         font-size: 20px;
         margin-top: 6px;
@@ -35,6 +37,7 @@ nz-divider {
 }
 
 virtual-scroller {
+    padding-bottom: 60px;
 }
 
 [post-list] {
@@ -102,7 +105,11 @@ virtual-scroller {
             padding: 10px;
             border: 1px dashed #666;
             border-radius: 5px;
-            margin: 0;
+            margin: 0 0 10px 0;
+
+            p {
+                margin-bottom: 0;
+            }
         }
     }
 }
@@ -163,6 +170,7 @@ virtual-scroller {
         border-radius: 10px;
         height: calc(100% - 60px);
         width: calc(100% - 20px);
+
         simplemde {
             height: 100%;
             width: 100%;
