@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.viewService.userCard.next(3);
+    // this.viewService.userCard.next(3);
     this.viewService.navList = []
     for (let index = 0; index < this.pageSize; index++) {
       this.items.push({})

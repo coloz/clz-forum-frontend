@@ -5,6 +5,8 @@ import Editor from '@toast-ui/editor';
 import '@toast-ui/editor/dist/i18n/zh-cn';
 import { ViewService } from 'src/app/core/services/view.service';
 import { SimplemdeComponent } from 'ngx-simplemde';
+import { IDatasource } from 'ngx-ui-scroll';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -17,10 +19,22 @@ export class ThreadComponent implements OnInit {
   items = [];
   tid;
 
-  subject;
-  like;
-  favtimes;
-  views;
+  threadInfo: {
+    tid
+    subject
+    recommend_add
+    favtimes
+    dateline
+    views
+    replies
+    author
+    authorid
+  }
+
+  // subject;
+  // like;
+  // favtimes;
+  // views;
 
   inputValue = "";
   inputValue_render = "";
@@ -31,6 +45,16 @@ export class ThreadComponent implements OnInit {
   total;
 
   loading: boolean;
+
+  datasource: IDatasource = {
+    get: (index, count) => this.getData(index, count),
+    settings: {
+      windowViewport: true,
+      minIndex: 1,
+      startIndex: 1,
+      bufferSize: 10,
+    }
+  }
 
   get navList() {
     return this.viewService.navList
@@ -44,8 +68,6 @@ export class ThreadComponent implements OnInit {
 
   @ViewChild('simplemde', { static: true }) private readonly simplemde: SimplemdeComponent;
 
-  @ViewChildren('post') postElementList: QueryList<ElementRef>;
-
   options = {
     toolbar: ['bold', 'italic', 'heading', '|', 'quote']
   };
@@ -56,15 +78,15 @@ export class ThreadComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       console.log(params);
       this.tid = params.tid
-      this.update().then(() => {
-        this.viewService.userCard.next(this.items[0].authorid.toString())
+      this.discuzService.getThreadInfo(this.tid).subscribe(resp => {
+        this.threadInfo = resp
       })
     })
   }
 
   ngAfterViewInit(): void {
     this.viewService.scroll2Top()
-    
+
     // this.simplemde.setOptions('lineNumbers', true);
   }
 
@@ -72,52 +94,31 @@ export class ThreadComponent implements OnInit {
     this.viewService.navList.pop()
   }
 
-  async update() {
-    return new Promise((resolve, reject) => {
-      this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
-        // console.log(resp);
-        this.items = resp.data.list;
-        this.total = resp.data.total;
-        this.subject = resp.data.subject;
-        this.like = resp.data.like;
-        this.favtimes = resp.data.favtimes;
-        this.views = resp.data.views;
-        this.viewService.navList.push({
-          type: 'thread',
-          text: this.items[0].subject,
-          id: this.tid
-        })
-        resolve(true)
-      })
-    })
+  getData(index, count) {
+    let tid = this.tid;
+    return this.discuzService.getThreadPosts({ tid, index, count })
+    // return this.discuzService.getThread({ tid: this.tid, pageIndex: index, pageSize: count })
+    //   .pipe(map((resp: any) => resp.data.list))
   }
 
-
-  // totalHeight = 0;
-  // fetchMore(event: IPageInfo) {
-  //   console.log(event.endIndex, this.items.length);
-  //   if (event.endIndex == -1 || event.endIndex !== this.items.length - 1 || this.items.length >= this.total) return;
-  //   this.pageIndex++;
-  //   this.loading = true;
-  //   this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
-  //     // console.log(resp);
-  //     this.items = this.items.concat(resp.data.list);
-  //     this.total = resp.data.total;
-  //     this.loading = false
-  //   })
-  // }
-
-  // 重新计算高度
-  // getTotalHeight() {
-  //   setInterval(() => {
-  //     let totalHeight_temp = 0;
-  //     this.postElementList.forEach(ele => {
-  //       totalHeight_temp += ele.nativeElement.clientHeight
+  // async update() {
+  //   return new Promise((resolve, reject) => {
+  //     this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
+  //       // console.log(resp);
+  //       this.items = resp.data.list;
+  //       this.total = resp.data.total;
+  //       this.subject = resp.data.subject;
+  //       this.like = resp.data.like;
+  //       this.favtimes = resp.data.favtimes;
+  //       this.views = resp.data.views;
+  //       this.viewService.navList.push({
+  //         type: 'thread',
+  //         text: this.items[0].subject,
+  //         id: this.tid
+  //       })
+  //       resolve(true)
   //     })
-  //     this.totalHeight = totalHeight_temp
-  //     // console.log(this.totalHeight);
-  //   }, 2000)
-
+  //   })
   // }
 
   initEditor() {
@@ -128,10 +129,6 @@ export class ThreadComponent implements OnInit {
       initialValue: 'content',
       language: 'zh-CN'
     });
-  }
-
-  onScroll() {
-
   }
 
   inputMode = false;

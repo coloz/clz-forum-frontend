@@ -55,8 +55,17 @@ virtual-scroller {
 
     [text-info] {
         display: flex;
-        // align-items: flex-end;
+        align-items: center;
+        width: 100%;
+        position: relative;
         height: 20px;
+
+        [num] {
+            position: absolute;
+            right: 0;
+            color: #999;
+            font-size: 12px;
+        }
     }
 
     [username] {

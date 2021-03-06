@@ -15,9 +15,22 @@ export class DiscuzService {
     return this.http.post(`api/thread/all`, params)
   }
 
-  getThread({ tid, pageIndex, pageSize }): any {
-    return this.http.get(`api/thread/${tid}?pageIndex=${pageIndex}&pageSize=${pageSize}`)
+  getThreadInfo(tid): any {
+    return this.http.get(`api/thread/${tid}/info`)
   }
+
+  getThreadPosts({ tid, index, count }): any {
+    return this.http.get(`api/thread/${tid}/posts`, {
+      params: {
+        index: index,
+        count: count
+      }
+    })
+  }
+
+  // getThread({ tid, pageIndex, pageSize }): any {
+  //   return this.http.get(`api/thread/${tid}?pageIndex=${pageIndex}&pageSize=${pageSize}`)
+  // }
 
   getUser({ uid }): any {
     return this.http.get(`api/user/${uid}`)

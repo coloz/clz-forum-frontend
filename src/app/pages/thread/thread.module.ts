@@ -14,6 +14,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { AvatarModule } from 'src/app/core/components/avatar/avatar.module';
 import { SimplemdeConfig, SimplemdeModule } from 'ngx-simplemde';
+import { UiScrollModule } from 'ngx-ui-scroll';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { SimplemdeConfig, SimplemdeModule } from 'ngx-simplemde';
     NzButtonModule,
     AvatarModule,
     SimplemdeModule,
+    UiScrollModule,
     RouterModule.forChild([
       {
         path: '',
