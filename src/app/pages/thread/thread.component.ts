@@ -5,9 +5,7 @@ import Editor from '@toast-ui/editor';
 import '@toast-ui/editor/dist/i18n/zh-cn';
 import { ViewService } from 'src/app/core/services/view.service';
 import { SimplemdeComponent } from 'ngx-simplemde';
-import { IDatasource } from 'ngx-ui-scroll';
-import { map } from 'rxjs/operators';
-
+import { Datasource } from 'ngx-ui-scroll';
 
 @Component({
   selector: 'app-thread',
@@ -46,7 +44,7 @@ export class ThreadComponent implements OnInit {
 
   loading: boolean;
 
-  datasource: IDatasource = {
+  datasource = new Datasource({
     get: (index, count) => this.getData(index, count),
     settings: {
       windowViewport: true,
@@ -54,7 +52,7 @@ export class ThreadComponent implements OnInit {
       startIndex: 1,
       bufferSize: 10,
     }
-  }
+  })
 
   get navList() {
     return this.viewService.navList
@@ -96,30 +94,11 @@ export class ThreadComponent implements OnInit {
 
   getData(index, count) {
     let tid = this.tid;
+    setTimeout(() => {
+      this.datasource.adapter.check();
+    }, 50)
     return this.discuzService.getThreadPosts({ tid, index, count })
-    // return this.discuzService.getThread({ tid: this.tid, pageIndex: index, pageSize: count })
-    //   .pipe(map((resp: any) => resp.data.list))
   }
-
-  // async update() {
-  //   return new Promise((resolve, reject) => {
-  //     this.discuzService.getThread({ tid: this.tid, pageIndex: this.pageIndex, pageSize: this.pageSize }).subscribe(resp => {
-  //       // console.log(resp);
-  //       this.items = resp.data.list;
-  //       this.total = resp.data.total;
-  //       this.subject = resp.data.subject;
-  //       this.like = resp.data.like;
-  //       this.favtimes = resp.data.favtimes;
-  //       this.views = resp.data.views;
-  //       this.viewService.navList.push({
-  //         type: 'thread',
-  //         text: this.items[0].subject,
-  //         id: this.tid
-  //       })
-  //       resolve(true)
-  //     })
-  //   })
-  // }
 
   initEditor() {
     const editor = new Editor({

@@ -6,37 +6,33 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FDatePipe implements PipeTransform {
 
   transform(value: any): string {
-    var date = new Date(value * 1000);
-    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-    var D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate() + ' ';
-    var H = date.getHours() + ':';
-    var Mi = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-
-    var M2 = date.getMonth() + 1;
-    var D2 = date.getDate();
-    var H2 = date.getHours();
-    var Mi2 = date.getMinutes();
-
-    var date1 = new Date();
-    var M1 = date1.getMonth() + 1;
-    var D1 = date1.getDate();
-    var H1 = date1.getHours();
-    var Mi1 = date1.getMinutes();
-    if (M1 > M2 || D1 > D2) {
-      return (M + D + H + Mi)
+    var dateTime = new Date(value * 1000);
+    var year = dateTime.getFullYear()
+    var month = dateTime.getMonth() + 1
+    var day = dateTime.getDate()
+    var hour = dateTime.getHours()
+    var minute = dateTime.getMinutes()
+    // var second = dateTime.getSeconds()
+    var millisecond = dateTime.getTime() // 将当前编辑的时间转换为毫秒
+    var now = new Date() // 获取本机当前的时间
+    var nowNew = now.getTime() // 将本机的时间转换为毫秒
+    var milliseconds = 0
+    var timeSpanStr
+    milliseconds = nowNew - millisecond
+    if (milliseconds <= 1000 * 60 * 1) { // 小于一分钟展示为刚刚
+      timeSpanStr = '刚刚'
+    } else if (1000 * 60 * 1 < milliseconds && milliseconds <= 1000 * 60 * 60) { // 大于一分钟小于一小时展示为分钟
+      timeSpanStr = Math.round((milliseconds / (1000 * 60))) + '分钟前'
+    } else if (1000 * 60 * 60 * 1 < milliseconds && milliseconds <= 1000 * 60 * 60 * 24) { // 大于一小时小于一天展示为小时
+      timeSpanStr = Math.round(milliseconds / (1000 * 60 * 60)) + '小时前'
+    } else if (1000 * 60 * 60 * 24 < milliseconds && milliseconds <= 1000 * 60 * 60 * 24 * 15) { // 大于一天小于十五天展示位天
+      timeSpanStr = Math.round(milliseconds / (1000 * 60 * 60 * 24)) + '天前'
+    } else if (milliseconds > 1000 * 60 * 60 * 24 * 15 && year === now.getFullYear()) {
+      timeSpanStr = month + '-' + day + ' ' + hour + ':' + minute
+    } else {
+      timeSpanStr = year + '-' + month + '-' + day + ' ' + hour + ':' + minute
     }
-    else if (H1 - H2 > 1) {
-      var H3 = H1 - H2
-      return (H3 + "小时前")
-    }
-    else if (Mi1 - Mi2 > 1) {
-      var Mi3 = Mi1 - Mi2
-      return (Mi3 + "分钟前")
-    }
-    else {
-      return "刚刚"
-    }
-    return null;
+    return timeSpanStr
   }
 
 }
