@@ -8,6 +8,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { AuthModule } from '../auth/auth.module';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { AvatarModule } from '../avatar/avatar.module';
 @NgModule({
   declarations: [HeaderComponent],
   imports: [
@@ -17,7 +18,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzModalModule,
     AuthModule,
     NzGridModule,
-    NzButtonModule
+    NzButtonModule,
+    AvatarModule
   ],
   exports: [HeaderComponent]
 })

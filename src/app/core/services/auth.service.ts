@@ -6,6 +6,8 @@ import { MD5 } from 'crypto-js';
 })
 export class AuthService {
 
+  userInfo;
+
   constructor(
     private http: HttpClient
   ) { }
@@ -16,6 +18,10 @@ export class AuthService {
       password: MD5(password).toString(),
       token: token
     })
+  }
+
+  getProfile() {
+    return this.http.get('api/profile')
   }
 
 }

@@ -47,6 +47,11 @@
     position: absolute;
     right: 0;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    [username] {
+        margin-left: 10px;
+    }
 }
 
 // [right2] {

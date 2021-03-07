@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './core/services/auth.service';
 import { ConfigLoaderService } from './core/services/config-loader.service';
 import { ViewService } from './core/services/view.service';
 
@@ -16,11 +17,12 @@ export class AppComponent {
     return this.viewService.navList
   }
 
-  currentUid;
+  // currentUid;
 
   constructor(
     private viewService: ViewService,
-    private configLoader: ConfigLoaderService
+    private configLoader: ConfigLoaderService,
+    private authService: AuthService
   ) {
 
   }
@@ -28,15 +30,13 @@ export class AppComponent {
   ngOnInit() {
     this.configLoader.load('app').then((config) => {
       this.loadSiteConfig(config)
+      this.loadUserInfo()
     })
   }
 
-  ngAfterViewInit() {
-    this.viewService.userCard.subscribe(uid => {
-      setTimeout(() => {
-        this.currentUid = uid
-      });
-
+  loadUserInfo() {
+    this.authService.getProfile().subscribe(resp => {
+      this.authService.userInfo = resp
     })
   }
 

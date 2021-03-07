@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { AuthService } from '../../services/auth.service';
 import { AuthComponent } from '../auth/auth.component';
 
 @Component({
@@ -26,8 +27,13 @@ export class HeaderComponent implements OnInit {
     }
   ]
 
+  get userInfo() {
+    return this.authService.userInfo
+  }
+
   constructor(
-    private modal: NzModalService
+    private modal: NzModalService,
+    private authService: AuthService
   ) { }
 
 

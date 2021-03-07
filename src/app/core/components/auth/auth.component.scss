@@ -3,8 +3,10 @@
 }
 
 [left] {
+    height: 400px;
+    overflow: hidden;
     img {
-        width: 100%;
+        height: 100%;
     }
 }
 
@@ -53,15 +55,19 @@ nz-tabset {
             cursor: pointer;
         }
     }
+
+    re-captcha {
+        width: 100%;
+        height: 35px;
+    }
 }
-.g-recaptcha{
+.g-recaptcha {
     position: relative !important;
 }
 
-
-nz-tabset{
-    ::ng-deep{
-        .ant-tabs-tab{
+nz-tabset {
+    ::ng-deep {
+        .ant-tabs-tab {
             margin: 0 10px !important;
         }
     }

@@ -21,30 +21,31 @@ export class AuthComponent implements OnInit {
     private authService: AuthService,
     private recaptchaV3Service: ReCaptchaV3Service,
     private message: NzMessageService,
-    private modal: NzModalService
+    private modal: NzModalService,
   ) { }
 
   ngOnInit(): void {
   }
 
   login() {
-    this.authService.login(this.username, this.password, this.token).subscribe(resp => {
-      console.log('resp', resp);
-      this.modal.closeAll()
-      // const ref: NzModalRef = this.modal.info();
-      // ref.close();
-    })
-  }
-
-  public executeImportantAction(): void {
     this.recaptchaV3Service.execute('importantAction')
       .subscribe((token) => this.handleToken(token));
   }
 
+  // public executeImportantAction(): void {
+  //   this.recaptchaV3Service.execute('importantAction')
+  //     .subscribe((token) => this.handleToken(token));
+  // }
+
   handleToken(token) {
     console.log(token);
-    this.token = token
+    this.token = token;
+    this.authService.login(this.username, this.password, this.token).subscribe((resp: any) => {
+      console.log('resp', resp);
+      this.authService.userInfo = resp.detail
+      this.message.success('欢迎回来')
+      this.modal.closeAll()
+    })
   }
-
 
 }

@@ -4,6 +4,14 @@
         <div menu-list>
             <a item *ngFor="let item of items" href="{{item.url}}" target="_blank"> {{item.text}}</a>
         </div>
-        <div right (click)="openAuthModel()">登录 / 注册</div>
+        <ng-container *ngIf="!userInfo">
+            <div right (click)="openAuthModel()">登录 / 注册</div>
+        </ng-container>
+        <ng-container *ngIf="userInfo">
+            <div right class="animate__animated animate__fadeIn">
+                <app-avatar [uid]="userInfo.uid"></app-avatar>
+                <div username>{{userInfo.username}}</div>
+            </div>
+        </ng-container>
     </div>
 </div>
