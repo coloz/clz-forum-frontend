@@ -15,10 +15,11 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { AvatarModule } from 'src/app/core/components/avatar/avatar.module';
 import { SimplemdeConfig, SimplemdeModule } from 'ngx-simplemde';
 import { UiScrollModule } from 'ngx-ui-scroll';
+import { PostComponent } from './post/post.component';
 
 
 @NgModule({
-  declarations: [ThreadComponent],
+  declarations: [ThreadComponent, PostComponent],
   imports: [
     CommonModule,
     FormsModule,

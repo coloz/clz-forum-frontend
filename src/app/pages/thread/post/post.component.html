@@ -1,0 +1,14 @@
+<div post *ngIf="item">
+    <div user-info>
+        <app-avatar [uid]="item.authorid"></app-avatar>
+        <div text-info>
+            <div username>{{item.author}}</div>
+            <div date>{{item.dateline | fDate}}</div>
+            <div num>#{{num}}</div>
+        </div>
+    </div>
+    <div message>
+        <div [innerHTML]="item.message | bbCode"></div>
+        <div tail></div>
+    </div>
+</div>
