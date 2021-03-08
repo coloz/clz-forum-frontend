@@ -21,20 +21,18 @@ export class ServerInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       map((event: HttpEvent<any>) => {
-        // console.log(req);
-        // console.log(event);
         if (event instanceof HttpResponse) {
           if (typeof event.body.access_token != 'undefined') {
             localStorage.setItem('access_token', event.body.access_token)
-            // return event
           } else if (typeof event.body.code != 'undefined') {
             if (event.body.code != 0) {
-              this.message.error(event.body.message);
-              return
-            } 
-            // else {
-            //   return event.body.detail;
-            // }
+              if (event.body.code == 5) {
+                localStorage.removeItem('access_token');
+                this.message.info(event.body.message);
+              } else {
+                this.message.error(event.body.message);
+              }
+            }
           }
         }
         return event

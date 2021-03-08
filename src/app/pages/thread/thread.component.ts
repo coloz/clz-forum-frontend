@@ -83,6 +83,7 @@ export class ThreadComponent implements OnInit {
       this.tid = params.tid
       this.discuzService.getThreadInfo(this.tid).subscribe(resp => {
         this.threadInfo = resp
+        this.viewService.navList.push({text:this.threadInfo.subject})
       })
     })
   }

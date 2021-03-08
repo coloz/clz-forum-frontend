@@ -23,7 +23,7 @@
                                 <button [disabled]="reactiveForm.invalid">Submit</button>
                             </form> -->
                         </div>
-                        <button class="login" nz-button nzType="primary" (click)="login()">登录</button>
+                        <button class="login" nz-button nzType="primary" (click)="login()" [nzLoading]="isLoading">登录</button>
                         <div text>
                             <div>社交账号登录</div>
                             <div icon>

@@ -8,9 +8,9 @@ export class ViewService {
 
   userCard = new Subject();
   navList: {
-    type: string,
+    type?: string,
     text: string,
-    id: number
+    id?: number
   }[] = []
 
   constructor() { }

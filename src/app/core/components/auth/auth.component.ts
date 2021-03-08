@@ -17,6 +17,8 @@ export class AuthComponent implements OnInit {
   password;
   token;
 
+  isLoading = false;
+
   constructor(
     private authService: AuthService,
     private recaptchaV3Service: ReCaptchaV3Service,
@@ -28,23 +30,23 @@ export class AuthComponent implements OnInit {
   }
 
   login() {
+    this.isLoading = true;
     this.recaptchaV3Service.execute('importantAction')
       .subscribe((token) => this.handleToken(token));
   }
 
-  // public executeImportantAction(): void {
-  //   this.recaptchaV3Service.execute('importantAction')
-  //     .subscribe((token) => this.handleToken(token));
-  // }
-
   handleToken(token) {
-    console.log(token);
+    // console.log(token);
     this.token = token;
     this.authService.login(this.username, this.password, this.token).subscribe((resp: any) => {
       console.log('resp', resp);
-      this.authService.userInfo = resp.detail
-      this.message.success(`${this.authService.userInfo.username}，欢迎回来`)
-      this.modal.closeAll()
+      if (resp.code == 0) {
+        this.authService.userInfo = resp.detail
+        this.message.success(`${this.authService.userInfo.username}，欢迎回来`)
+        this.modal.closeAll()
+      } else {
+        this.isLoading = false;
+      }
     })
   }
 
