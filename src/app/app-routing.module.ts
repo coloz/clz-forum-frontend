@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'p/:pid',
     loadChildren: () => import('./pages/post/post.module').then(m => m.PostModule)
   },
+  {
+    path: 'setting',
+    loadChildren: () => import('./pages/setting/setting.module').then(m => m.SettingModule)
+  },
 ];
 
 @NgModule({

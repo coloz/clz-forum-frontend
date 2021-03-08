@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { AuthService } from '../../services/auth.service';
+import { ConfigLoaderService } from '../../services/config-loader.service';
 import { AuthComponent } from '../auth/auth.component';
 
 @Component({
@@ -10,22 +11,10 @@ import { AuthComponent } from '../auth/auth.component';
 })
 export class HeaderComponent implements OnInit {
 
-
-  items = [
-    {
-      text: '资源中心',
-      url: 'https://www.arduino.cn/resource.php'
-    }, {
-      text: '社区活动',
-      url: 'https://www.arduino.cn/forum-68-1.html'
-    }, {
-      text: 'Arduino教程',
-      url: 'https://www.arduino.cn/thread-1066-1-1.html'
-    }, {
-      text: '物联网教程',
-      url: 'https://www.arduino.cn/thread-83754-1-1.html'
-    }
-  ]
+  menu: {
+    top: any[],
+    user: any[]
+  };
 
   get userInfo() {
     return this.authService.userInfo
@@ -33,11 +22,15 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private modal: NzModalService,
-    private authService: AuthService
+    private authService: AuthService,
+    private configLoader: ConfigLoaderService
   ) { }
 
 
   ngOnInit(): void {
+    this.configLoader.load('menu').then(config => {
+      this.menu = config
+    })
   }
 
   openAuthModel() {
@@ -49,4 +42,7 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  logout() {
+    this.authService.logout()
+  }
 }

@@ -43,7 +43,7 @@ export class AuthComponent implements OnInit {
     this.authService.login(this.username, this.password, this.token).subscribe((resp: any) => {
       console.log('resp', resp);
       this.authService.userInfo = resp.detail
-      this.message.success('欢迎回来')
+      this.message.success(`${this.authService.userInfo.username}，欢迎回来`)
       this.modal.closeAll()
     })
   }
