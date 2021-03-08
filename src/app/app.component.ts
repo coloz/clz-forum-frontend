@@ -35,12 +35,13 @@ export class AppComponent {
   }
 
   loadUserInfo() {
-    this.authService.getProfile().subscribe(resp => {
-      this.authService.userInfo = resp
+    this.authService.getProfile().subscribe((resp: any) => {
+      if (resp.code == 0)
+        this.authService.userInfo = resp
     })
   }
 
-  loadSiteConfig(config) {
+  loadSiteConfig(config) {    
     document.title = config.brand
     let link: any = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';

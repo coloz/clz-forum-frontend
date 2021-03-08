@@ -7,7 +7,7 @@ import {
   HttpResponse,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -24,19 +24,25 @@ export class ServerInterceptor implements HttpInterceptor {
         if (event instanceof HttpResponse) {
           if (typeof event.body.access_token != 'undefined') {
             localStorage.setItem('access_token', event.body.access_token)
-          } else if (typeof event.body.code != 'undefined') {
-            if (event.body.code != 0) {
-              if (event.body.code == 5) {
-                localStorage.removeItem('access_token');
-                this.message.info(event.body.message);
-              } else {
-                this.message.error(event.body.message);
-              }
+            return event
+          }
+          if (typeof event.body.code != 'undefined') {
+            if (event.body.code == 0) {
+              return event
+            }
+            if (event.body.code == -1) {
+              localStorage.removeItem('access_token');
+              this.message.info(event.body.message);
+              return event
+            }
+            if (event.body.code > 0) {
+              this.message.error(event.body.message);
+              return event
             }
           }
         }
         return event
-      }),
+      })
     );
   }
 }
