@@ -6,6 +6,9 @@ import '@toast-ui/editor/dist/i18n/zh-cn';
 import { ViewService } from 'src/app/core/services/view.service';
 import { SimplemdeComponent } from 'ngx-simplemde';
 import { Datasource } from 'ngx-ui-scroll';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { AuthComponent } from 'src/app/core/components/auth/auth.component';
 
 @Component({
   selector: 'app-thread',
@@ -62,6 +65,8 @@ export class ThreadComponent implements OnInit {
     private discuzService: DiscuzService,
     private activatedRoute: ActivatedRoute,
     private viewService: ViewService,
+    private authService: AuthService,
+    private modal: NzModalService
   ) { }
 
   @ViewChild('simplemde', { static: true }) private readonly simplemde: SimplemdeComponent;
@@ -112,6 +117,18 @@ export class ThreadComponent implements OnInit {
 
   inputMode = false;
   showInput() {
-    this.inputMode = true;
+    if (this.authService.userInfo)
+      this.inputMode = true;
+    else
+      this.openAuthModel()
+  }
+
+  openAuthModel() {
+    this.modal.create({
+      nzContent: AuthComponent,
+      nzFooter: null,
+      nzClosable: false,
+      nzWidth: '500px'
+    })
   }
 }

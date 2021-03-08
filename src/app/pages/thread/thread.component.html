@@ -26,7 +26,11 @@
                 </div>
                 <div input-btn (click)="showInput()">
                     <ng-container *ngIf="!inputMode">
-                        <i nz-icon nzType="comment" nzTheme="outline"></i>参加讨论
+                        <i nz-icon nzType="comment" nzTheme="outline"></i>
+                        <ng-container *ngIf="!authService.userInfo">
+                            登录社区，
+                        </ng-container>
+                        参加讨论
                     </ng-container>
                     <ng-container *ngIf="inputMode">
                         <simplemde [(ngModel)]="inputValue"></simplemde>
