@@ -83,7 +83,7 @@ export class ThreadComponent implements OnInit {
       this.tid = params.tid
       this.discuzService.getThreadInfo(this.tid).subscribe(resp => {
         this.threadInfo = resp
-        this.viewService.navList.push({text:this.threadInfo.subject})
+        this.viewService.navList.push({ text: this.threadInfo.subject })
       })
     })
   }
@@ -130,6 +130,14 @@ export class ThreadComponent implements OnInit {
       nzFooter: null,
       nzClosable: false,
       nzWidth: '500px'
+    })
+  }
+
+  publish() {
+    console.log(this.inputValue);
+    this.discuzService.publishPost(this.tid, { content: this.inputValue }).subscribe(resp => {
+      console.log(resp);
+
     })
   }
 }

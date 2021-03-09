@@ -36,7 +36,7 @@
                 </ng-container>
                 <div class="animated fadeInUp faster btn-box" *ngIf="inputMode">
                     <button close-btn nz-button nzType="default" (click)="inputMode=false">取消</button>
-                    <button public-btn nz-button nzType="primary">发表</button>
+                    <button public-btn nz-button nzType="primary" (click)="publish()">发表</button>
                 </div>
             </div>
         </div>

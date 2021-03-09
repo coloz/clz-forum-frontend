@@ -45,4 +45,12 @@ export class DiscuzService {
   }
 
 
+  publishThread() {
+    // return this.http.post(`api/thread/`)
+  }
+
+  publishPost(tid, post) {
+    return this.http.post(`api/thread/${tid}`, post)
+  }
+
 }
