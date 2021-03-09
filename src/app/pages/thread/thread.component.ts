@@ -83,7 +83,7 @@ export class ThreadComponent implements OnInit {
           settings: {
             windowViewport: true,
             minIndex: 1,
-            maxIndex: this.threadInfo.total,
+            maxIndex: this.threadInfo.total + 1,
             startIndex: 1,
             bufferSize: 15,
           }
@@ -134,33 +134,36 @@ export class ThreadComponent implements OnInit {
         this.inputMode = false;
         this.inputValue = '';
         this.message.success('发表成功')
+        console.log(this.datasource);
 
-        this.scrollBottom()
+        await this.datasource.adapter.reload(this.threadInfo.total + 1);
+        await this.datasource.adapter.relax();
+        // await this.datasource.adapter.fix({ scrollPosition: +Infinity });
         setTimeout(() => {
-          this.appendPost(resp.detail.post)
-        }, 300)
+          document.body.scrollTop = document.body.scrollHeight+99999999
+        }, 3000)
       }
     })
   }
 
-  doScrollTo() {
-    const index = Number(this.threadInfo.total);
-    if (!isNaN(index)) {
-      this.datasource.adapter.fix({
-        scrollToItem: (item) => item.data.id === index,
-        scrollToItemOpt: false
-      });
-    }
-  }
+  // doScrollTo() {
+  //   const index = Number(this.threadInfo.total);
+  //   if (!isNaN(index)) {
+  //     this.datasource.adapter.fix({
+  //       scrollToItem: (item) => item.data.id === index,
+  //       scrollToItemOpt: false
+  //     });
+  //   }
+  // }
 
-  async appendPost(post) {
-    await this.datasource.adapter.relax();
-    await this.datasource.adapter.append({
-      items: [post]
-    });
-  }
+  // async appendPost(post) {
+  //   await this.datasource.adapter.relax();
+  //   await this.datasource.adapter.append({
+  //     items: [post]
+  //   });
+  // }
 
-  async scrollBottom() {
-    await this.datasource.adapter.fix({ scrollPosition: +Infinity });
-  }
+  // async scrollBottom() {
+  //   await this.datasource.adapter.fix({ scrollPosition: +Infinity });
+  // }
 }
