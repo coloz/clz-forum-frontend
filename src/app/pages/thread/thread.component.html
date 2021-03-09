@@ -24,18 +24,16 @@
                         {{threadInfo.favtimes}}
                     </div>
                 </div>
-                <div input-btn (click)="showInput()">
-                    <ng-container *ngIf="!inputMode">
-                        <i nz-icon nzType="comment" nzTheme="outline"></i>
-                        <ng-container *ngIf="!authService.userInfo">
-                            登录社区，
-                        </ng-container>
-                        参加讨论
+                <div input-btn (click)="showInput()" *ngIf="!inputMode">
+                    <i nz-icon nzType="comment" nzTheme="outline"></i>
+                    <ng-container *ngIf="!authService.userInfo">
+                        登录社区，
                     </ng-container>
-                    <ng-container *ngIf="inputMode">
-                        <simplemde [(ngModel)]="inputValue"></simplemde>
-                    </ng-container>
+                    参加讨论
                 </div>
+                <ng-container *ngIf="inputMode">
+                    <simplemde [(ngModel)]="inputValue"></simplemde>
+                </ng-container>
                 <div class="animated fadeInUp faster btn-box" *ngIf="inputMode">
                     <button close-btn nz-button nzType="default" (click)="inputMode=false">取消</button>
                     <button public-btn nz-button nzType="primary">发表</button>

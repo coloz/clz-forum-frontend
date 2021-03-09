@@ -102,11 +102,6 @@ virtual-scroller {
         border-radius: 10px;
         height: calc(100% - 60px);
         width: calc(100% - 20px);
-
-        simplemde {
-            height: 100%;
-            width: 100%;
-        }
     }
 
     // [close-btn] {
@@ -137,5 +132,6 @@ virtual-scroller {
         width: calc(100% - 20px);
         display: flex;
         justify-content: space-between;
+        z-index: 99;
     }
 }
