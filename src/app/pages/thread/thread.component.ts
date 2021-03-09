@@ -85,7 +85,7 @@ export class ThreadComponent implements OnInit {
             minIndex: 1,
             maxIndex: this.threadInfo.total,
             startIndex: 1,
-            bufferSize: 10,
+            bufferSize: 15,
           }
         })
       })
@@ -129,14 +129,15 @@ export class ThreadComponent implements OnInit {
 
   publish() {
     console.log(this.inputValue);
-    this.discuzService.publishPost(this.tid, { content: this.inputValue }).subscribe((resp: any) => {
+    this.discuzService.publishPost(this.tid, { content: this.inputValue }).subscribe(async (resp: any) => {
       if (resp.code == 0) {
         this.inputMode = false;
         this.inputValue = '';
         this.message.success('发表成功')
 
+        this.scrollBottom()
         setTimeout(() => {
-          this.scrollBottom()
+          this.appendPost(resp.detail.post)
         }, 300)
       }
     })
@@ -147,12 +148,19 @@ export class ThreadComponent implements OnInit {
     if (!isNaN(index)) {
       this.datasource.adapter.fix({
         scrollToItem: (item) => item.data.id === index,
-        scrollToItemOpt: true
+        scrollToItemOpt: false
       });
     }
   }
 
-  scrollBottom() {
-    this.datasource.adapter.fix({ scrollPosition: +Infinity });
+  async appendPost(post) {
+    await this.datasource.adapter.relax();
+    await this.datasource.adapter.append({
+      items: [post]
+    });
+  }
+
+  async scrollBottom() {
+    await this.datasource.adapter.fix({ scrollPosition: +Infinity });
   }
 }
