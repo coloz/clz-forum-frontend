@@ -1,14 +1,13 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DiscuzService } from 'src/app/core/services/discuz.service';
-import Editor from '@toast-ui/editor';
-import '@toast-ui/editor/dist/i18n/zh-cn';
 import { ViewService } from 'src/app/core/services/view.service';
 import { SimplemdeComponent } from 'ngx-simplemde';
 import { Datasource } from 'ngx-ui-scroll';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { AuthComponent } from 'src/app/core/components/auth/auth.component';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-thread',
@@ -30,6 +29,7 @@ export class ThreadComponent implements OnInit {
     replies
     author
     authorid
+    total
   }
 
   // subject;
@@ -47,15 +47,7 @@ export class ThreadComponent implements OnInit {
 
   loading: boolean;
 
-  datasource = new Datasource({
-    get: (index, count) => this.getData(index, count),
-    settings: {
-      windowViewport: true,
-      minIndex: 1,
-      startIndex: 1,
-      bufferSize: 10,
-    }
-  })
+  datasource;
 
   get navList() {
     return this.viewService.navList
@@ -66,7 +58,8 @@ export class ThreadComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private viewService: ViewService,
     private authService: AuthService,
-    private modal: NzModalService
+    private modal: NzModalService,
+    private message: NzMessageService
   ) { }
 
   @ViewChild('simplemde', { static: true }) private readonly simplemde: SimplemdeComponent;
@@ -83,7 +76,18 @@ export class ThreadComponent implements OnInit {
       this.tid = params.tid
       this.discuzService.getThreadInfo(this.tid).subscribe(resp => {
         this.threadInfo = resp
+        document.title = this.threadInfo.subject
         this.viewService.navList.push({ text: this.threadInfo.subject })
+        this.datasource = new Datasource({
+          get: (index, count) => this.getData(index, count),
+          settings: {
+            windowViewport: true,
+            minIndex: 1,
+            maxIndex: this.threadInfo.total,
+            startIndex: 1,
+            bufferSize: 10,
+          }
+        })
       })
     })
   }
@@ -106,16 +110,6 @@ export class ThreadComponent implements OnInit {
     return this.discuzService.getThreadPosts({ tid, index, count })
   }
 
-  initEditor() {
-    const editor = new Editor({
-      el: document.querySelector('#editor'),
-      previewStyle: 'tab',
-      height: '200px',
-      initialValue: 'content',
-      language: 'zh-CN'
-    });
-  }
-
   inputMode = false;
   showInput() {
     if (this.authService.userInfo)
@@ -135,9 +129,30 @@ export class ThreadComponent implements OnInit {
 
   publish() {
     console.log(this.inputValue);
-    this.discuzService.publishPost(this.tid, { content: this.inputValue }).subscribe(resp => {
-      console.log(resp);
+    this.discuzService.publishPost(this.tid, { content: this.inputValue }).subscribe((resp: any) => {
+      if (resp.code == 0) {
+        this.inputMode = false;
+        this.inputValue = '';
+        this.message.success('发表成功')
 
+        setTimeout(() => {
+          this.scrollBottom()
+        }, 300)
+      }
     })
+  }
+
+  doScrollTo() {
+    const index = Number(this.threadInfo.total);
+    if (!isNaN(index)) {
+      this.datasource.adapter.fix({
+        scrollToItem: (item) => item.data.id === index,
+        scrollToItemOpt: true
+      });
+    }
+  }
+
+  scrollBottom() {
+    this.datasource.adapter.fix({ scrollPosition: +Infinity });
   }
 }

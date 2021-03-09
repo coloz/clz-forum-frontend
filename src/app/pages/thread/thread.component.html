@@ -11,7 +11,9 @@
                     </div>
                 </div>
                 <nz-divider></nz-divider>
-                <thread-post *uiScroll="let item of datasource;index as i" [item]="item" [num]="i"></thread-post>
+                <ng-container *ngIf="datasource">
+                    <thread-post *uiScroll="let item of datasource;index as i" [item]="item" [num]="i"></thread-post>
+                </ng-container>
             </div>
             <div discuss-bar [ngClass]="{'inpitMode': inputMode}">
                 <div btn-box *ngIf="!inputMode && threadInfo">
