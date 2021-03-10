@@ -53,4 +53,15 @@ export class DiscuzService {
     return this.http.post(`api/thread/${tid}`, post)
   }
 
+  getFavoriteAndLikeState(tid) {
+    return this.http.get(`api/thread/${tid}/like`)
+  }
+
+  addFavorite(tid) {
+    return this.http.post(`api/thread/${tid}/favorite`, {})
+  }
+
+  addLike(tid) {
+    return this.http.post(`api/thread/${tid}/like`, {})
+  }
 }

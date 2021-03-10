@@ -32,10 +32,10 @@ export class ThreadComponent implements OnInit {
     total
   }
 
-  // subject;
-  // like;
-  // favtimes;
-  // views;
+  favoriteAndLikeState = {
+    favorite: false,
+    like: false
+  }
 
   inputValue = "";
   inputValue_render = "";
@@ -89,6 +89,9 @@ export class ThreadComponent implements OnInit {
           }
         })
       })
+      this.discuzService.getFavoriteAndLikeState(this.tid).subscribe((resp: any) => {
+        this.favoriteAndLikeState = resp.detail
+      })
     })
   }
 
@@ -102,6 +105,28 @@ export class ThreadComponent implements OnInit {
     this.viewService.navList.pop()
   }
 
+  addLike() {
+    if (!this.authService.userInfo) {
+      this.openAuthModel()
+      return
+    }
+    this.discuzService.addLike(this.tid).subscribe(resp=>{
+
+    })
+
+  }
+
+  addFavorite() {
+    if (!this.authService.userInfo) {
+      this.openAuthModel()
+      return
+    }
+    this.discuzService.addFavorite(this.tid).subscribe(resp=>{
+
+    })
+
+  }
+
   getData(index, count) {
     let tid = this.tid;
     setTimeout(() => {
@@ -112,10 +137,11 @@ export class ThreadComponent implements OnInit {
 
   inputMode = false;
   showInput() {
-    if (this.authService.userInfo)
-      this.inputMode = true;
-    else
+    if (!this.authService.userInfo) {
       this.openAuthModel()
+      return
+    }
+    this.inputMode = true;
   }
 
   openAuthModel() {
