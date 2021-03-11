@@ -110,8 +110,12 @@ export class ThreadComponent implements OnInit {
       this.openAuthModel()
       return
     }
-    this.discuzService.addLike(this.tid).subscribe(resp=>{
-
+    this.discuzService.addLike(this.tid).subscribe((resp: any) => {
+      this.favoriteAndLikeState.like = resp.detail.like
+      if (resp.detail.like)
+        this.threadInfo.recommend_add++;
+      else
+        this.threadInfo.recommend_add--;
     })
 
   }
@@ -121,8 +125,12 @@ export class ThreadComponent implements OnInit {
       this.openAuthModel()
       return
     }
-    this.discuzService.addFavorite(this.tid).subscribe(resp=>{
-
+    this.discuzService.addFavorite(this.tid).subscribe((resp: any) => {
+      this.favoriteAndLikeState.favorite = resp.detail.favorite
+      if (resp.detail.favorite)
+        this.threadInfo.favtimes++;
+      else
+        this.threadInfo.favtimes--;
     })
 
   }
@@ -166,7 +174,7 @@ export class ThreadComponent implements OnInit {
         await this.datasource.adapter.relax();
         // await this.datasource.adapter.fix({ scrollPosition: +Infinity });
         setTimeout(() => {
-          document.body.scrollTop = document.body.scrollHeight+99999999
+          document.body.scrollTop = document.body.scrollHeight + 99999999
         }, 3000)
       }
     })

@@ -18,13 +18,17 @@
             <div discuss-bar [ngClass]="{'inpitMode': inputMode}">
                 <div btn-box *ngIf="!inputMode && threadInfo">
                     <div btn (click)="addLike()">
-                        <i nz-icon nzType="like" nzTheme="outline"
-                            [ngStyle]="{'color': favoriteAndLikeState.like?'red':'#666'}"></i>
+                        <i nz-icon nzType="like" nzTheme="{{favoriteAndLikeState.like?'fill':'outline'}}"
+                            [ngStyle]="{'color': favoriteAndLikeState.like?'#ff3b44':'#999'}"
+                            class="animate__animated animate__faster"
+                            [ngClass]="{'animate__pulse': favoriteAndLikeState.like}"></i>
                         {{threadInfo.recommend_add}}
                     </div>
                     <div btn (click)="addFavorite()">
-                        <i nz-icon nzType="star" nzTheme="outline"
-                            [ngStyle]="{'color': favoriteAndLikeState.favorite?'red':'#666'}"></i>
+                        <i nz-icon nzType="star" nzTheme="{{favoriteAndLikeState.favorite?'fill':'outline'}}"
+                            [ngStyle]="{'color': favoriteAndLikeState.favorite?'#ffbc00':'#999'}"
+                            class="animate__animated animate__faster"
+                            [ngClass]="{'animate__pulse': favoriteAndLikeState.favorite}"></i>
                         {{threadInfo.favtimes}}
                     </div>
                 </div>
