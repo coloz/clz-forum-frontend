@@ -169,13 +169,21 @@ export class ThreadComponent implements OnInit {
         this.inputValue = '';
         this.message.success('发表成功')
         console.log(this.datasource);
-
-        await this.datasource.adapter.reload(this.threadInfo.total + 1);
+        this.threadInfo.total = this.threadInfo.total + 1;
+        await this.datasource.adapter.reset({
+          settings: {
+            windowViewport: true,
+            minIndex: 1,
+            maxIndex: this.threadInfo.total,
+            startIndex: 1,
+            bufferSize: 15,
+          }
+        });
         await this.datasource.adapter.relax();
-        // await this.datasource.adapter.fix({ scrollPosition: +Infinity });
-        setTimeout(() => {
-          document.body.scrollTop = document.body.scrollHeight + 99999999
-        }, 3000)
+        await this.datasource.adapter.reload(this.threadInfo.total);
+        await this.datasource.adapter.relax();
+        await this.datasource.adapter.fix({ scrollPosition: +Infinity });
+
       }
     })
   }
