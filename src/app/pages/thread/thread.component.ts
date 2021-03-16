@@ -165,47 +165,16 @@ export class ThreadComponent implements OnInit {
     console.log(this.inputValue);
     this.discuzService.publishPost(this.tid, { content: this.inputValue }).subscribe(async (resp: any) => {
       if (resp.code == 0) {
+        console.log(resp.detail);
+
         this.inputMode = false;
         this.inputValue = '';
         this.message.success('发表成功')
         console.log(this.datasource);
-        this.threadInfo.total = this.threadInfo.total + 1;
-        await this.datasource.adapter.reset({
-          settings: {
-            windowViewport: true,
-            minIndex: 1,
-            maxIndex: this.threadInfo.total,
-            startIndex: 1,
-            bufferSize: 15,
-          }
-        });
         await this.datasource.adapter.relax();
-        await this.datasource.adapter.reload(this.threadInfo.total);
-        await this.datasource.adapter.relax();
-        await this.datasource.adapter.fix({ scrollPosition: +Infinity });
-
+        await this.datasource.adapter.append({ items: [resp.detail.post], eof: true });
+        await this.datasource.adapter.fix({ scrollPosition: Infinity });
       }
     })
   }
-
-  // doScrollTo() {
-  //   const index = Number(this.threadInfo.total);
-  //   if (!isNaN(index)) {
-  //     this.datasource.adapter.fix({
-  //       scrollToItem: (item) => item.data.id === index,
-  //       scrollToItemOpt: false
-  //     });
-  //   }
-  // }
-
-  // async appendPost(post) {
-  //   await this.datasource.adapter.relax();
-  //   await this.datasource.adapter.append({
-  //     items: [post]
-  //   });
-  // }
-
-  // async scrollBottom() {
-  //   await this.datasource.adapter.fix({ scrollPosition: +Infinity });
-  // }
 }
