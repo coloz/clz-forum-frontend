@@ -12,7 +12,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AuthComponent implements OnInit {
 
-
+  passwordVisible = false;
   username;
   password;
   token;
