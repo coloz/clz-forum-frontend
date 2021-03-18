@@ -16,12 +16,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/thread/thread.module').then(m => m.ThreadModule)
   },
   {
-    path: 'u/:uid',
-    loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
+    path: 'a/:aid',
+    loadChildren: () => import('./pages/article/article.module').then(m => m.ArticleModule)
   },
   {
-    path: 'p/:pid',
-    loadChildren: () => import('./pages/post/post.module').then(m => m.PostModule)
+    path: 'u/:uid',
+    loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
   },
   {
     path: 'setting',

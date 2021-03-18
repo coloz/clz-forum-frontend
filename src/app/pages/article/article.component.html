@@ -1,0 +1,57 @@
+<div thread-detail-page>
+    <div nz-row [nzGutter]="10">
+        <div nz-col nzMd="18" nzSm="24">
+            <div left-box>
+                <div top-box>
+                    <div nav-box>
+                        <app-breadcrumb></app-breadcrumb>
+                    </div>
+                    <div title *ngIf="threadInfo">
+                        {{threadInfo.subject}}
+                    </div>
+                </div>
+                <nz-divider></nz-divider>
+                <ng-container *ngIf="datasource">
+                    <thread-post *uiScroll="let item of datasource;index as i" [item]="item" [num]="i"></thread-post>
+                </ng-container>
+            </div>
+            <div discuss-bar [ngClass]="{'inpitMode': inputMode}">
+                <div btn-box *ngIf="!inputMode && threadInfo">
+                    <div btn (click)="addLike()">
+                        <i nz-icon nzType="like" nzTheme="{{favoriteAndLikeState.like?'fill':'outline'}}"
+                            [ngStyle]="{'color': favoriteAndLikeState.like?'#ff3b44':'#999'}"
+                            class="animate__animated animate__faster"
+                            [ngClass]="{'animate__pulse': favoriteAndLikeState.like}"></i>
+                        {{threadInfo.recommend_add}}
+                    </div>
+                    <div btn (click)="addFavorite()">
+                        <i nz-icon nzType="star" nzTheme="{{favoriteAndLikeState.favorite?'fill':'outline'}}"
+                            [ngStyle]="{'color': favoriteAndLikeState.favorite?'#ffbc00':'#999'}"
+                            class="animate__animated animate__faster"
+                            [ngClass]="{'animate__pulse': favoriteAndLikeState.favorite}"></i>
+                        {{threadInfo.favtimes}}
+                    </div>
+                </div>
+                <div input-btn (click)="showInput()" *ngIf="!inputMode">
+                    <i nz-icon nzType="comment" nzTheme="outline"></i>
+                    <ng-container *ngIf="!authService.userInfo">
+                        登录社区，
+                    </ng-container>
+                    参加讨论
+                </div>
+                <ng-container *ngIf="inputMode">
+                    <simplemde [(ngModel)]="inputValue"></simplemde>
+                </ng-container>
+                <div class="animated fadeInUp faster btn-box" *ngIf="inputMode">
+                    <button close-btn nz-button nzType="default" (click)="inputMode=false">取消</button>
+                    <button public-btn nz-button nzType="primary" (click)="publish()">发表</button>
+                </div>
+            </div>
+        </div>
+        <div nz-col nzMd="6" hide-768>
+            <div right-box>
+                <app-user-card *ngIf="threadInfo" [uid]="threadInfo.authorid"></app-user-card>
+            </div>
+        </div>
+    </div>
+</div>
