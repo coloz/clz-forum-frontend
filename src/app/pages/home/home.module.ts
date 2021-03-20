@@ -17,6 +17,7 @@ import { TagListModule } from 'src/app/core/components/tag-list/tag-list.module'
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { AvatarModule } from 'src/app/core/components/avatar/avatar.module';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NewThreadModule } from 'src/app/core/components/new-thread/new-thread.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -37,6 +38,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzInputModule,
     NzButtonModule,
     NzSkeletonModule,
+    NewThreadModule,
     RouterModule.forChild([
       {
         path: '',

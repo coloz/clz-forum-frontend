@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { NewThreadComponent } from 'src/app/core/components/new-thread/new-thread.component';
 import { DiscuzService } from 'src/app/core/services/discuz.service';
 import { ViewService } from 'src/app/core/services/view.service';
 
@@ -30,7 +32,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private discuzService: DiscuzService,
     private viewService: ViewService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private modal: NzModalService
   ) { }
 
   ngOnInit(): void {
@@ -84,6 +87,15 @@ export class HomeComponent implements OnInit {
 
   orderChange(event) {
     this.update()
+  }
+
+  newThread() {
+    this.modal.create({
+      nzContent: NewThreadComponent,
+      nzFooter: null,
+      nzClosable: false,
+      nzWidth: '100vw'
+    })
   }
 
 }

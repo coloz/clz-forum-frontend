@@ -25,12 +25,11 @@ import { ServerInterceptor } from './core/interceptors/server.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ConfigLoaderService } from './core/services/config-loader.service';
 
-
 registerLocaleData(zh);
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
