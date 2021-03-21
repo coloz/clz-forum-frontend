@@ -7,13 +7,60 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class NewThreadComponent implements OnInit {
 
+  inputValue?: string;
+  optionGroups: AutocompleteOptionGroups[] = [];
+
   constructor() { }
 
-  ngOnInit(): void {
+  onChange(value: string): void {
+    console.log(value);
   }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.optionGroups = [
+        {
+          title: '话题',
+          children: [
+            {
+              title: 'AntDesign',
+              count: 10000
+            },
+            {
+              title: 'AntDesign UI',
+              count: 10600
+            }
+          ]
+        },
+        {
+          title: '问题',
+          children: [
+            {
+              title: 'AntDesign UI 有多好',
+              count: 60100
+            },
+            {
+              title: 'AntDesign 是啥',
+              count: 30010
+            }
+          ]
+        },
+        {
+          title: '文章',
+          children: [
+            {
+              title: 'AntDesign 是一个设计语言',
+              count: 100000
+            }
+          ]
+        }
+      ];
+    }, 1000);
+  }
+  
+
   value=''
-  inputValue = '';
-  tags = ['Unremovable', 'Tag 2', 'Tag 3'];
+  tags = ['Tag 1', 'Tag 2', 'Tag 3'];
   inputVisible = false;
   @ViewChild('inputElement', { static: false }) inputElement?: ElementRef;
 
@@ -22,8 +69,8 @@ export class NewThreadComponent implements OnInit {
   }
 
   sliceTagName(tag: string): string {
-    const isLongTag = tag.length > 20;
-    return isLongTag ? `${tag.slice(0, 20)}...` : tag;
+    const isLongTag = tag.length > 8;
+    return isLongTag ? `${tag.slice(0, 8)}...` : tag;
   }
 
   showInput(): void {
@@ -40,4 +87,10 @@ export class NewThreadComponent implements OnInit {
     this.inputValue = '';
     this.inputVisible = false;
   }
+}
+
+export interface AutocompleteOptionGroups {
+  title: string;
+  count?: number;
+  children?: AutocompleteOptionGroups[];
 }

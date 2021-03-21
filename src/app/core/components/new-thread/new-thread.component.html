@@ -4,13 +4,33 @@
 <simplemde [(ngModel)]="inputValue"></simplemde>
 
 <div>标签</div>
-<nz-tag *ngFor="let tag of tags; let i = index" [nzMode]="i === 0 ? 'default' : 'closeable'"
+<nz-tag *ngFor="let tag of tags; let i = index" nzMode="closeable"
     (nzOnClose)="handleClose(tag)">
     {{ sliceTagName(tag) }}
 </nz-tag>
-<nz-tag *ngIf="!inputVisible" class="editable-tag" nzNoAnimation (click)="showInput()">
+<!-- <nz-tag *ngIf="!inputVisible" class="editable-tag" nzNoAnimation (click)="showInput()">
     <i nz-icon nzType="plus"></i>
     New Tag
 </nz-tag>
 <input #inputElement nz-input nzSize="small" *ngIf="inputVisible" type="text" [(ngModel)]="inputValue"
-    style="width: 78px;" (blur)="handleInputConfirm()" (keydown.enter)="handleInputConfirm()" />
+    style="width: 78px;" (blur)="handleInputConfirm()" (keydown.enter)="handleInputConfirm()" /> -->
+
+<div class="example-input">
+    <nz-input-group nzSize="small">
+        <input placeholder="input here" nz-input [(ngModel)]="inputValue" (ngModelChange)="onChange($event)"
+            [nzAutocomplete]="auto" />
+    </nz-input-group>
+    <nz-autocomplete #auto>
+        <nz-auto-optgroup *ngFor="let group of optionGroups" [nzLabel]="groupTitle">
+            <ng-template #groupTitle>
+                <span>{{ group.title }}
+                    <a class="more-link" href="https://www.google.com/search?q=ng+zorro" target="_blank">更多</a>
+                </span>
+            </ng-template>
+            <nz-auto-option *ngFor="let option of group.children" [nzLabel]="option.title" [nzValue]="option.title">
+                {{ option.title }}
+                <span class="certain-search-item-count">{{ option.count }} 人 关注</span>
+            </nz-auto-option>
+        </nz-auto-optgroup>
+    </nz-autocomplete>
+</div>
