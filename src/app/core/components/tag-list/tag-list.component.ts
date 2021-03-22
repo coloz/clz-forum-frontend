@@ -19,12 +19,11 @@ export class TagListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.discuzService.getTags(15).subscribe(resp => {
-      // console.log(resp);
-      // this.items = resp;
-    })
+    // this.discuzService.getTags(15).subscribe(resp => {
+    //   // console.log(resp);
+    //   // this.items = resp;
+    // })
     this.discuzService.getCategorys(20).subscribe(resp => {
-      // console.log(resp);
       for (let index = 0; index < resp.length; index++) {
         const element = resp[index];
         if (element.fid == 2) {
