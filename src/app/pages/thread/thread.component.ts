@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DiscuzService } from 'src/app/core/services/discuz.service';
 import { ViewService } from 'src/app/core/services/view.service';
