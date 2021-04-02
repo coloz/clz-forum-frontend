@@ -42,6 +42,7 @@ export class AuthComponent implements OnInit {
       console.log('resp', resp);
       if (resp.code == 0) {
         this.authService.userInfo = resp.detail
+        this.authService.isLogin.next(true)
         this.message.success(`${this.authService.userInfo.username}，欢迎回来`)
         this.modal.closeAll()
       } else {

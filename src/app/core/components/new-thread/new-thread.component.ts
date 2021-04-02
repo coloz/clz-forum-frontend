@@ -47,4 +47,8 @@ export class NewThreadComponent implements OnInit {
     this.inputValue = '';
   }
 
+  publish(){
+
+  }
+  
 }

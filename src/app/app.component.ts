@@ -35,10 +35,7 @@ export class AppComponent {
   }
 
   loadUserInfo() {
-    this.authService.getProfile().subscribe((resp: any) => {
-      if (resp.code == 0)
-        this.authService.userInfo = resp.detail
-    })
+    this.authService.getProfile()
   }
 
   loadSiteConfig(config) {    

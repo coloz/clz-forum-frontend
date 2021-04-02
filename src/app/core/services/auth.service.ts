@@ -2,12 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MD5 } from 'crypto-js';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   userInfo;
+
+  isLogin = new BehaviorSubject(false);
 
   constructor(
     private http: HttpClient,
@@ -29,7 +32,12 @@ export class AuthService {
   }
 
   getProfile() {
-    return this.http.get('api/profile')
+    this.http.get('api/profile').subscribe((resp: any) => {
+      if (resp.code == 0) {
+        this.userInfo = resp.detail
+        this.isLogin.next(true)
+      }
+    })
   }
 
 }

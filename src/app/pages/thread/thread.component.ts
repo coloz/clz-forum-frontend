@@ -70,6 +70,8 @@ export class ThreadComponent implements OnInit {
 
   demo;
 
+  isLoginSubscriber;
+
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       console.log(params);
@@ -89,8 +91,12 @@ export class ThreadComponent implements OnInit {
           }
         })
       })
-      this.discuzService.getFavoriteAndLikeState(this.tid).subscribe((resp: any) => {
-        this.favoriteAndLikeState = resp.detail
+      this.isLoginSubscriber = this.authService.isLogin.subscribe(state => {
+        if (state) {
+          this.discuzService.getFavoriteAndLikeState(this.tid).subscribe((resp: any) => {
+            this.favoriteAndLikeState = resp.detail
+          })
+        }
       })
     })
   }
@@ -103,6 +109,7 @@ export class ThreadComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.viewService.navList.pop()
+    this.isLoginSubscriber.unsubscribe()
   }
 
   addLike() {
