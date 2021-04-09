@@ -17,7 +17,7 @@ export class AvatarComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (typeof changes.uid !== 'undefined') {
-      this.url = this.getAvatar()
+      this.url = this.getUcenterAvatar()
     }
   }
 
@@ -32,6 +32,10 @@ export class AvatarComponent implements OnInit {
     let dir3 = uidStr.substr(5, 2);
     let last = uidStr.substr(-2);
     return `https://arduino.cn/uc_server/data/avatar/${dir1}/${dir2}/${dir3}/${last}_avatar_${this.size}.jpg`
+  }
+
+  getUcenterAvatar(){
+    return `https://arduino.cn/uc_server/avatar.php?uid=${this.uid}&size=small`
   }
 
 }
