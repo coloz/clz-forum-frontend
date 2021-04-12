@@ -31,7 +31,7 @@
     "ng-zorro-antd": "^11.1.0",
     "ngx-markdown": "^11.0.1",
     "ngx-simplemde": "^10.0.0",
-    "ngx-ui-scroll": "^2.0.0-rc.9",
+    "ngx-ui-scroll": "^2.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
