@@ -16,10 +16,11 @@ import { AvatarModule } from 'src/app/core/components/avatar/avatar.module';
 import { SimplemdeConfig, SimplemdeModule } from 'ngx-simplemde';
 import { UiScrollModule } from 'ngx-ui-scroll';
 import { PostComponent } from './post/post.component';
-
+import { PostJumperComponent } from './post-jumper/post-jumper.component';
+import { NzSliderModule } from 'ng-zorro-antd/slider';
 
 @NgModule({
-  declarations: [ThreadComponent, PostComponent],
+  declarations: [ThreadComponent, PostComponent, PostJumperComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -35,6 +36,7 @@ import { PostComponent } from './post/post.component';
     AvatarModule,
     SimplemdeModule,
     UiScrollModule,
+    NzSliderModule,
     RouterModule.forChild([
       {
         path: '',
@@ -42,6 +44,6 @@ import { PostComponent } from './post/post.component';
       },
     ]),
   ],
-  providers:[SimplemdeConfig]
+  providers: [SimplemdeConfig]
 })
 export class ThreadModule { }

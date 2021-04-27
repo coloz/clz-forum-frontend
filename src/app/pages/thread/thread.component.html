@@ -51,6 +51,7 @@
         <div nz-col nzMd="6" hide-768>
             <div right-box>
                 <app-user-card *ngIf="threadInfo" [uid]="threadInfo.authorid"></app-user-card>
+                <app-post-jumper [postNum]="threadInfo.total"></app-post-jumper>
             </div>
         </div>
     </div>
