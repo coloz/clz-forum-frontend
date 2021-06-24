@@ -3,11 +3,11 @@
 <div style="margin-top: 10px;margin-bottom: 5px;">内容</div>
 <simplemde [(ngModel)]="content"></simplemde>
 <div style="margin-top: 10px;margin-bottom: 5px;">标签</div>
-<nz-select [nzMaxMultipleCount]="5" [nzOptionOverflowSize]="5" nzMode="tags" nzPlaceHolder="选择标签"
-    [(ngModel)]="tags" [nzClearIcon]="closeButton">
+<nz-select [nzMaxMultipleCount]="5" [nzOptionOverflowSize]="5" nzMode="tags" nzPlaceHolder="选择标签" [(ngModel)]="tags"
+    [nzClearIcon]="closeButton">
     <nz-option *ngFor="let item of tagList" [nzLabel]="item" [nzValue]="item" (click)="selectTag()"></nz-option>
 </nz-select>
 <ng-template #closeButton>
     <i nz-icon nzType="close-circle" nzTheme="outline"></i>
 </ng-template>
-<button nz-button nzType="primary" (click)="publish()">发表</button>
+<button style="position: absolute;right: 20px;" nz-button nzType="primary" (click)="publish()">发表</button>

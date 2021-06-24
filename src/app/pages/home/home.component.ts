@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
       nzContent: NewThreadComponent,
       nzFooter: null,
       nzClosable: false,
-      nzWidth: '100vw'
+      nzWidth: '1024px'
     })
   }
 
